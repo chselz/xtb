@@ -69,7 +69,6 @@ srcs += files(
   'enso_printout.f90',
   'eqrot.f90',
   'esp.f',
-  'expire.f90',
   'features.F90',
   'filetools.F90',
   'fixparam.f90',

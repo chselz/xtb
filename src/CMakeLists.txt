@@ -71,7 +71,6 @@ list(APPEND srcs
   "${dir}/enso_printout.f90"
   "${dir}/eqrot.f90"
   "${dir}/esp.f"
-  "${dir}/expire.f90"
   "${dir}/features.F90"
   "${dir}/filetools.F90"
   "${dir}/fixparam.f90"
