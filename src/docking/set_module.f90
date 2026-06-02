@@ -28,7 +28,7 @@ module xtb_docking_set_module
    use xtb_type_atomlist
    use xtb_mctc_strings, only : parse
    use xtb_setmod
-   use xtb_mctc_convert, only : autokcal
+   use mctc_io_convert, only : autokcal
 
    implicit none
 

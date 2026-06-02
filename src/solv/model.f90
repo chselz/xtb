@@ -20,7 +20,7 @@
 module xtb_solv_model
    use mctc_env, only : wp
    use xtb_mctc_constants, only : fourpi
-   use xtb_mctc_convert, only : aatoau, autoaa, kcaltoau, autokcal
+   use mctc_io_convert, only : aatoau, autoaa, kcaltoau, autokcal
    use xtb_mctc_strings, only : lowercase
    use xtb_mctc_systools, only : rdpath
    use xtb_param_vdwradd3, only : vanDerWaalsRadD3

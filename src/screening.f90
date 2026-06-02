@@ -17,7 +17,7 @@
 
 module xtb_screening
    use mctc_env, only : wp
-   use xtb_mctc_convert, only : autokcal, aatoau
+   use mctc_io_convert, only : autokcal, aatoau
    use xtb_mctc_filetypes, only : fileType
    use xtb_type_environment
    use xtb_type_molecule
