@@ -17,7 +17,7 @@
 
 !> A set of molecules for testing
 module xtb_test_molstock
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_molecule, only: TMolecule, init
    implicit none
    private

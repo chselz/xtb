@@ -17,7 +17,7 @@
 
 !> Define reference states of solution
 module xtb_solv_state
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : boltzmann => kB
    implicit none
    private

@@ -19,7 +19,7 @@ module xtb_metadynamic
 contains
 
 subroutine metadynamic(metavar,nat,at,xyz,ebias,g)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_setvar
    use xtb_lsrmsd
    implicit none
@@ -90,7 +90,7 @@ end subroutine metadynamic
 
 subroutine load_metadynamic(metavar,nat,at,xyz)
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_fixparam
    use xtb_readin
    implicit none
@@ -112,7 +112,7 @@ end subroutine load_metadynamic
 
 subroutine load_rmsdbias(metavar,nat,at,xyz)
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    use xtb_mctc_systools, only : getline
    use xtb_fixparam
@@ -194,7 +194,7 @@ end subroutine load_rmsdbias
 
 subroutine set_metadynamic(metavar,nat,at,xyz)
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_fixparam
    use xtb_readin
    implicit none

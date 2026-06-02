@@ -39,7 +39,7 @@ end subroutine collect_dftd4
 
 
 subroutine test_dftd4_pbc3d_neighbourlist(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_mctc_convert, only : aatoau
 
@@ -252,7 +252,7 @@ end subroutine test_dftd4_pbc3d_neighbourlist
 
 
 subroutine test_dftd4_pbc3d_latticepoints(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_mctc_convert, only : aatoau
 
@@ -469,7 +469,7 @@ end subroutine test_dftd4_pbc3d_latticepoints
 
 
 subroutine test_dftd4_pbc3d_threebody_neighs(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_mctc_convert, only : aatoau
 
@@ -652,7 +652,7 @@ end subroutine test_dftd4_pbc3d_threebody_neighs
 
 
 subroutine test_dftd4_pbc3d_threebody_latp(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_mctc_convert, only : aatoau
 

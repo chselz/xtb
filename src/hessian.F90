@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_hessian
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_freq_io, only : rdhess, wrhess, writeHessianOut, &
       & write_tm_vibspectrum, g98fake, g98fake2, rddipd
    use xtb_freq_project, only : trproj
@@ -31,7 +31,7 @@ contains
 subroutine numhess( &
       & env,mol,chk0,calc, &
       & egap,et,maxiter,etot,gr,sr,res)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 !$ use omp_lib
 
    use xtb_mctc_convert
@@ -555,7 +555,7 @@ end subroutine numhess
 
 subroutine numhess_rmsd( &
       & env,mol,hbias)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
 
 !! ========================================================================
@@ -639,7 +639,7 @@ end subroutine numhess_rmsd
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine rotmol(n,xyz,xrot,yrot,zrot)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only: pi
    implicit none
    integer :: n,i
@@ -673,7 +673,7 @@ end subroutine rotmol
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine distort(mol,freq,u)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : generateFileName
    use xtb_type_molecule
    use xtb_io_writer, only : writeMolecule

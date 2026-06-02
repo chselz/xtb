@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_extern_mopac
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_symbols, only : toSymbol
    use xtb_type_calculator, only : TCalculator

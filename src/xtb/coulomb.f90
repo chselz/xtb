@@ -17,7 +17,7 @@
 
 !> Implementation of an isotropic electrostatics container
 module xtb_xtb_coulomb
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : blas_dot, blas_symv
    use xtb_xtb_data, only : TCoulombData
    use xtb_xtb_thirdorder, only : TThirdOrder, init

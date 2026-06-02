@@ -17,7 +17,7 @@
 
 !> @brief helper tools for periodic boundary conditions
 module xtb_pbc_tools
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants,  only : pi
 ! ---------------------------> IMPORTANT <--------------------------- !
 !  DO NOT INCLUDE ANY DERIVED TYPES FROM THE TBDEFS INTO THIS MODULE  !

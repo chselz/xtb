@@ -17,7 +17,7 @@
 
 !> general functions for core functionalities of the SCC
 module xtb_scc_core
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la, only : contract
    use xtb_mctc_lapack, only : lapack_sygvd
    use xtb_mctc_blas, only : blas_gemm, mctc_symv, mctc_gemm
@@ -800,7 +800,7 @@ end subroutine addToShellShift
 !  eigenvalue solver single-precision
 !! ========================================================================
 subroutine solve4(full,ndim,ihomo,acc,H,S,X,P,e,fail)
-   use xtb_mctc_accuracy, only : sp
+   use mctc_env, only : sp
    integer, intent(in)   :: ndim
    logical, intent(in)   :: full
    integer, intent(in)   :: ihomo

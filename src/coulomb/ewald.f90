@@ -19,7 +19,7 @@
 !
 !  Part of this code originates from the DFTB+ codebase.
 module xtb_coulomb_ewald
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_type_environment, only : TEnvironment
    implicit none

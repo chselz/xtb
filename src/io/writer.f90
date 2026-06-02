@@ -20,7 +20,7 @@ module xtb_io_writer
    use mctc_env, only : error_type
    use mctc_io, only : structure_type, write_structure
    use xtb_io_writer_turbomole, only : writeResultsTurbomole
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : fileType
    use xtb_mctc_version, only : version
    use xtb_type_molecule, only : TMolecule, assignment(=)

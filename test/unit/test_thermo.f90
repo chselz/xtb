@@ -38,7 +38,7 @@ end subroutine collect_thermo
 
 
 subroutine test_axis(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_mctc_convert
    use xtb_type_molecule
@@ -144,7 +144,7 @@ subroutine test_axis(error)
 end subroutine test_axis
 
 subroutine test_thermo_calc(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_mctc_convert
@@ -195,7 +195,7 @@ subroutine test_thermo_calc(error)
 end subroutine test_thermo_calc
 
 subroutine test_print_thermo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_mctc_convert

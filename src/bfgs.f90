@@ -18,7 +18,7 @@ module xtb_bfgs
 contains
 
 subroutine bfgs(nat3,gnorm,grad,grado,dx,hess)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : blas_spmv, blas_dot
    !-------------------------------------------------------------------
    ! Purpose:
@@ -103,7 +103,7 @@ subroutine bfgs(nat3,gnorm,grad,grado,dx,hess)
 end subroutine bfgs
 
 subroutine powell(nat3,gnorm,grad,grado,dx,hess)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !-------------------------------------------------------------------
    ! Purpose:
@@ -162,7 +162,7 @@ subroutine powell(nat3,gnorm,grad,grado,dx,hess)
 end subroutine powell
 
 subroutine hdamp(gnorm,dampO,dampD)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp) gnorm,dampO,dampD
    dampD = 1.0

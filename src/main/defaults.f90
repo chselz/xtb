@@ -17,7 +17,7 @@
 
 !> Initialize default values for global variables
 module xtb_main_defaults
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_calculator, only : TCalculator
    use xtb_type_environment, only : TEnvironment
    use xtb_type_molecule, only : TMolecule

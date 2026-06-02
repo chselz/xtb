@@ -37,7 +37,7 @@ end subroutine collect_molecule
 
 
 subroutine test_class_molecule_mic_distances(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    use xtb_type_param
    use xtb_eeq
@@ -80,7 +80,7 @@ subroutine test_class_molecule_mic_distances(error)
 end subroutine test_class_molecule_mic_distances
 
 subroutine test_class_molecule_axis_trafo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    use xtb_type_param
    use xtb_disp_ncoord

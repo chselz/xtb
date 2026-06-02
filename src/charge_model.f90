@@ -18,7 +18,7 @@ module xtb_chargemodel
 contains
 
 subroutine new_multieq_model_2019(chrgeq,n,at)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    implicit none
    type(chrg_parameter) :: chrgeq
@@ -145,7 +145,7 @@ subroutine new_multieq_model_2019(chrgeq,n,at)
 end subroutine new_multieq_model_2019
 
 subroutine new_charge_model_2019(chrgeq,n,at)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    implicit none
    type(chrg_parameter) :: chrgeq
@@ -245,7 +245,7 @@ subroutine new_charge_model_2019(chrgeq,n,at)
 end subroutine new_charge_model_2019
 
 subroutine new_charge_model_2018(chrgeq,n,at)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    implicit none
    type(chrg_parameter) :: chrgeq
@@ -345,7 +345,7 @@ subroutine new_charge_model_2018(chrgeq,n,at)
 end subroutine new_charge_model_2018
 
 subroutine gfn0_charge_model(chrgeq,n,at,jData)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    use xtb_xtb_data
    implicit none
@@ -367,7 +367,7 @@ subroutine gfn0_charge_model(chrgeq,n,at,jData)
 end subroutine gfn0_charge_model
 
 subroutine read_charge_model(chrgeq,n,at,fname)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    implicit none
    type(chrg_parameter) :: chrgeq

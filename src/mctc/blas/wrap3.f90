@@ -17,7 +17,7 @@
 
 !> Wrappers for BLAS
 module xtb_mctc_blas_wrap3
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    use xtb_mctc_blas_level3, only : mctc_gemm, mctc_symm, mctc_syrk, mctc_syr2k, &
       & mctc_trmm, mctc_trsm
    implicit none

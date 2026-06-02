@@ -23,7 +23,7 @@ module xtb_detrotra
   contains
 
   subroutine detrotra4(linear,mol,h,eig)
-    use xtb_mctc_accuracy, only : sp, wp
+    use mctc_env, only : sp, wp
     use xtb_type_molecule
     implicit none
     type(TMolecule), intent(in) :: mol
@@ -81,7 +81,7 @@ module xtb_detrotra
 !> determine rotational and translational modes 
 subroutine detrotra8(linear,n,xyz,h,eig)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    implicit none
     

@@ -17,7 +17,7 @@
 
 !> Implementation of orca output formats
 module xtb_io_writer_orca
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    implicit none
    private

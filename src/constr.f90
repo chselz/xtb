@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine constralltors(n,at,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_scanparam
    use xtb_intmodes
@@ -77,7 +77,7 @@ subroutine constralltors(n,at,xyz)
 end subroutine constralltors
 
 subroutine constrallangles(n,at,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_scanparam
    implicit none
@@ -125,7 +125,7 @@ subroutine constrallangles(n,at,xyz)
 end subroutine constrallangles
 
 subroutine constrallbonds(nat,at,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autoaa
    use xtb_param_atomicrad, only : atomicRad
    use xtb_scanparam
@@ -156,7 +156,7 @@ subroutine constrallbonds(nat,at,xyz)
 end subroutine constrallbonds
 
 subroutine constrpot(nat,at,xyz,g,e)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_scanparam
    use xtb_splitparam
@@ -335,7 +335,7 @@ subroutine constrpot(nat,at,xyz,g,e)
 end subroutine constrpot
 
 subroutine constrhess(nat,at,xyz0,Hess)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_scanparam
    use xtb_constrainpot
    use xtb_fixparam
@@ -407,7 +407,7 @@ end subroutine
 !  .....................................................................
 
 Subroutine dthetadr(nat,xyz,j,k,i,theta,kijk,dei,dej,dek)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !  .....................................................................
    !
@@ -482,7 +482,7 @@ End subroutine
 
 Subroutine dphidr(nat,xyz,i,j,k,l,phi,&
       &                  dphidri,dphidrj,dphidrk,dphidrl)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    !     the torsion derivatives
 
    implicit none
@@ -561,7 +561,7 @@ End subroutine
 
 Subroutine dphidrPBC(mode,nat,xyz,i,j,k,l,vTrR,vTrB,vTrC,phi,&
       &                  dphidri,dphidrj,dphidrk,dphidrl)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    !     the torsion derivatives
 
    implicit none
@@ -664,7 +664,7 @@ Subroutine domegadr&
       &           (nat,xyz,&
       &            i,j,k,l,omega,&
       &            domegadri,domegadrj,domegadrk,domegadrl)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !     inversion derivatives
    !  .....................................................................
@@ -740,7 +740,7 @@ Subroutine domegadrPBC&
       &           (nat,xyz,&
       &            i,j,k,l,vTr1,vTr2,vTr3,omega,&
       &            domegadri,domegadrj,domegadrk,domegadrl)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !     inversion derivatives
    !  .....................................................................
@@ -814,7 +814,7 @@ End subroutine
 !  .....................................................................
 
 real(wp) Function valijkl(nat,xyz,i,j,k,l)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !  .....................................................................
 
@@ -899,7 +899,7 @@ End function
 !  .....................................................................
 
 real(wp) Function valijk(nat,xyz,j,k,i)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !  .....................................................................
 
@@ -938,7 +938,7 @@ End function
 !  .....................................................................
 
 real(wp) Function valijkPBC(mode,nat,xyz,j,k,i,vTr1,vTr2,vTr3)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !  .....................................................................
 
@@ -993,7 +993,7 @@ End function
 !  .....................................................................
 
 real(wp) Function omega (nat,xyz,i,j,k,l)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !   Calculates the inversion angle
    !  .....................................................................
@@ -1025,7 +1025,7 @@ End function
 
 
 real(wp) Function omegaPBC (nat,xyz,i,j,k,l,vTr1,vTr2,vTr3)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    !   Calculates the inversion angle
    !  .....................................................................
@@ -1060,7 +1060,7 @@ End function
 !  .....................................................................
 
 Subroutine crossprod(ra,rb,rab)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    implicit none
 
@@ -1075,7 +1075,7 @@ End subroutine
 !  .....................................................................
 
 real(wp) Function  vecnorm (r,n,inorm)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    implicit none
 
@@ -1103,7 +1103,7 @@ End function
 !  .....................................................................
 
 subroutine crprod(a,b,c)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit double precision (a-h,o-z)
    dimension a(3),b(3),c(3)
 
@@ -1117,7 +1117,7 @@ end subroutine crprod
 !  .....................................................................
 
 subroutine vsc1(a,scale,tol)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit integer (i-n)
    implicit double precision (a-h,o-z)
    dimension a(3)
@@ -1136,7 +1136,7 @@ end subroutine vsc1
 !  .....................................................................
 
 pure subroutine impsc(a,b,c)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp),intent(in)  :: a(3),b(3)
    real(wp),intent(out) :: c
@@ -1164,7 +1164,7 @@ end subroutine impsc
 !  .....................................................................
 
 pure subroutine bangl(xyz,i,j,k,angle)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp),intent(in)  :: xyz(3,*)
    real(wp),intent(out) :: angle
@@ -1184,7 +1184,7 @@ pure subroutine bangl(xyz,i,j,k,angle)
 end subroutine bangl
 
 pure subroutine banglPBC(mode,xyz,i,j,k,iTr,iTr2,neigh,angle)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_gfnff_neighbor
    implicit none
    real(wp),intent(in)  :: xyz(3,*)                  

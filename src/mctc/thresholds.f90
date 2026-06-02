@@ -17,7 +17,7 @@
 
 !> Numerical thresholds shared between multiple algorithms
 module xtb_mctc_thresholds
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    public
 

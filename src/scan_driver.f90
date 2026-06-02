@@ -19,7 +19,7 @@ module xtb_scan
 contains
 
 subroutine relaxed_scan(env, mol, chk, calc)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : fileType
    use xtb_setparam
    use xtb_scanparam

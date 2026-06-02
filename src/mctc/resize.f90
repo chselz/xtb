@@ -17,7 +17,7 @@
 
 !> Reallocation implementation for resizing arrays
 module xtb_mctc_resize
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
 

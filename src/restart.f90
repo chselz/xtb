@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_restart
-   use xtb_mctc_accuracy, only : wp, i8
+   use mctc_env, only : wp, i8
    use xtb_mctc_io, only : stdout
    use xtb_type_environment, only : TEnvironment
    use xtb_type_wavefunction, only : TWavefunction

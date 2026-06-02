@@ -17,7 +17,7 @@
 
 module xtb_dynamic
    use xtb_io_writer, only : writeMolecule
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : fileType
    use xtb_single, only : singlepoint
    use xtb_intmodes, only : xyzgeo
@@ -139,7 +139,7 @@ end subroutine boltz
 
 subroutine md(env,mol,chk,calc, &
       &       egap,et,maxiter,epot,grd,sigma,icall,Tsoll,cdump2)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autokcal, aatoau, amutokg, amutoau, fstoau
    use xtb_mctc_constants, only : pi, kB
    use xtb_type_environment

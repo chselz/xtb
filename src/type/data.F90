@@ -20,7 +20,7 @@
 #endif
 
 module xtb_type_data
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_pcem
    use xtb_iff_data, only : TIFFData
 #if WITH_TBLITE

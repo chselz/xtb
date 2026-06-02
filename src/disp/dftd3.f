@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
       subroutine gdisp(n,iz,xyz,a1,a2,s8,abcscal,disp,g,cn,dcnij)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       use xtb_mctc_convert, only : autokcal, autoang => autoaa
       use xtb_mctc_param, only: r2r4 => sqrt_z_r4_over_r2,
      &                      rcov => covalent_radius_d3
@@ -361,7 +361,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 !
       subroutine get_dC6_dCNij(mxci,mxcj,cni,cnj,
      .           izi,izj,iat,jat,c6check,dc6i,dc6j)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       use xtb_disp_dftd3param
 
       IMPLICIT NONE
@@ -435,7 +435,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
       subroutine abcdisp(n,iz,xyz,eabc)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       use xtb_mctc_convert, only : autokcal, autoang => autoaa
       use xtb_mctc_param, only : r2r4 => sqrt_z_r4_over_r2,
      &                       rcov => covalent_radius_d3
@@ -588,7 +588,7 @@ c               fdmp=1.d0/(1.d0+6.d0*(rav)**(101.d0))
 
 
       subroutine getc6(iat,jat,nci,ncj,c6)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       use xtb_disp_dftd3param
       implicit none
       integer iat,jat,i,j
@@ -650,7 +650,7 @@ C in parts due to INTEL compiler bug
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
       subroutine setr0ab(max_elem,autoang,r)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none  
       integer max_elem,i,j,k
       real(wp) r(max_elem,max_elem),autoang
@@ -1434,7 +1434,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
       end subroutine setr0ab
 
       subroutine outg(nat,g,fname)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none
       integer nat,i
       real(wp) g(3,nat)

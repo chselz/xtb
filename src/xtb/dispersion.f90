@@ -17,7 +17,7 @@
 
 !> Self-consistent dispersion energy
 module xtb_xtb_dispersion
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_disp_dftd4
    use xtb_disp_ncoord
    use xtb_type_molecule, only : TMolecule

@@ -23,7 +23,7 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       module stm
       contains
       subroutine stmpic(n,nmo,nbf,at,xyz,C,efermi,emo,basis)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       use xtb_type_basisset
       use xtb_setparam
       use xtb_scc_core, only : dmat
@@ -207,7 +207,7 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       subroutine densints(n,nbf,xyz,intcut,point,pthr,P,
      &                    mprim,npp,nnn,indp,efact,gama,ee,dd,cut,espe,
      &                    basis)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       use xtb_type_basisset
       use xtb_intpack
       use esp

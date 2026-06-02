@@ -17,7 +17,7 @@
 
 !> Implementation of the electronegativity equilibration model
 module xtb_xtb_eeq
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : mctc_dot, mctc_symv
    use xtb_mctc_lapack, only : lapack_sytrf, lapack_sytri
    use xtb_mctc_la, only : contract

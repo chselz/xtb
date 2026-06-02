@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_mctc_constants
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
    real(wp),public,parameter :: pi = 3.1415926535897932384626433832795029_wp

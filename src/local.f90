@@ -18,7 +18,7 @@ module xtb_local
 contains
 
 subroutine local(nat,at,nbf,nao,ihomo,xyz,z,focc,s,p,cmo,eig,q,etot,gbsa,basis,results)
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    use xtb_mctc_constants, only : pi
    use xtb_mctc_convert, only : autoev,autoaa
    use xtb_mctc_symbols, only : toSymbol
@@ -595,7 +595,7 @@ end subroutine local
 
 ! determine type of LMO
 subroutine lmotype(n,at,xyz,ex,ey,ez,ia1,ia2,xcen,modi,pithr,typ)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: n,ia1,ia2,at(n)
    integer, intent(out)   :: typ
@@ -771,7 +771,7 @@ subroutine lmoneigh(n,rk,ecent,aneigh,neigh)
 end subroutine lmoneigh
 
 subroutine atomneigh(n,nat,xyz,ecent,neigh)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: n,nat
    integer, intent(inout) :: neigh(2,n)
@@ -803,7 +803,7 @@ pure function bndcheck(nat,list,i1,i2) result(check)
 end function bndcheck
 
 subroutine irand3(n1,n2,n3)
-   use xtb_mctc_accuracy, only : sp
+   use mctc_env, only : sp
    integer,intent(out) :: n1,n2,n3
    integer  :: irand
    real(sp) :: x
@@ -868,7 +868,7 @@ pure subroutine threeoutfour(i1,i2,j1,j2,n1,n2,n3)
 end subroutine threeoutfour
 
 pure subroutine calcrotation(x,ori,vec,phi)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    integer i,j
@@ -903,7 +903,7 @@ pure subroutine calcrotation(x,ori,vec,phi)
 end subroutine calcrotation
 
 pure subroutine piorient(a,b,flip)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp),intent(in)  :: a(3),b(3)
    logical, intent(out) :: flip

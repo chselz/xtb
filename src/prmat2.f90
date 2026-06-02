@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine prgemat(mat,d1,d2,name,inunit,instep)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: d1
    integer, intent(in) :: d2
@@ -56,7 +56,7 @@ end subroutine prgemat
 
 
 subroutine prsymat(mat,d1,name,inunit,instep)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use, intrinsic :: iso_fortran_env, only : output_unit
    implicit none
    integer, intent(in) :: d1

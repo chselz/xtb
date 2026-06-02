@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_type_anc
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas
    use xtb_mctc_lapack, only : lapack_spevd, lapack_syevd
    implicit none
@@ -147,7 +147,7 @@ end subroutine write_anc
 !> print information about current approximate normal coordinates to unit
 subroutine write_anc_2(self,iunit,nvar)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    implicit none
 
@@ -182,7 +182,7 @@ end subroutine write_anc_2
 !> initialize
 subroutine generate_anc_blowup(self,iunit,xyz,hess,pr,linear)
 
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la
    use xtb_detrotra, only : detrotra8
    implicit none
@@ -301,7 +301,7 @@ end subroutine generate_anc_blowup
 
 subroutine generate_anc_packed(self,xyz,hess,pr)
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la
    implicit none
    class(tb_anc),intent(inout) :: self
@@ -446,7 +446,7 @@ end subroutine sort
 subroutine get_cartesian(self,xyz)
    
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    implicit none
 
@@ -478,7 +478,7 @@ end subroutine get_cartesian
 subroutine get_normal(self,g_cartesian, g_normal)
    
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    implicit none
 

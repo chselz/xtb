@@ -18,7 +18,7 @@
 !> publication: https://doi.org/10.1039/D3CP02178E (further reference) 
 module xtb_oniom
 
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_convert, only: aatoau
    use xtb_type_atomlist, only: TAtomlist, len
    use xtb_type_calculator, only: TCalculator

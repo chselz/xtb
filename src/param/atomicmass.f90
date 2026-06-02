@@ -17,7 +17,7 @@
 
 !> Atomic masses
 module xtb_param_atomicmass
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : amutoau
    use xtb_mctc_symbols, only : toNumber
    implicit none

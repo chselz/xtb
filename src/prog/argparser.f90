@@ -17,7 +17,7 @@
 
 !> Implementation of the command line argument parser
 module xtb_prog_argparser
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_chartools, only : toLowercase
    implicit none
    private

@@ -17,7 +17,7 @@
 
 module xtb_eeq
    use, intrinsic :: iso_fortran_env, only : istdout => output_unit
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_blas, only : mctc_gemv, mctc_gemm, mctc_symv, mctc_copy, mctc_dot
    use xtb_mctc_lapack, only : lapack_sytrf, lapack_sytri

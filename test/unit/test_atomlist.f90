@@ -16,7 +16,7 @@
 
 module test_atomlist
    use testdrive, only : new_unittest, unittest_type, error_type, check, test_failed
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stderr
    use xtb_type_atomlist
    implicit none

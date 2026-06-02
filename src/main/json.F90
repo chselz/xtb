@@ -70,7 +70,7 @@ contains
 
    subroutine main_xtb_json &
       (ijson, mol, wfx, xbas, sccres, freqres)
-      use xtb_mctc_accuracy, only: wp
+      use mctc_env, only: wp
 
 !! ========================================================================
 !  load class definitions
@@ -298,7 +298,7 @@ contains
 
    subroutine write_json_intensities(ijson, freqres, printalpha)
       use xtb_type_data
-      use xtb_mctc_accuracy, only: wp
+      use mctc_env, only: wp
       integer, intent(in) :: ijson
       type(freq_results), intent(in) :: freqres
       logical, intent(in) :: printalpha
@@ -341,7 +341,7 @@ contains
       use xtb_gfnff_topology, only: TGFFTopology
       use xtb_gfnff_neighbourlist, only: TGFFNeighbourList
       use xtb_gfnff_topology, only: TPrintTopo
-      use xtb_mctc_accuracy, only: wp
+      use mctc_env, only: wp
       use xtb_gfnff_neighbor
       include 'xtb_version.fh'
       !> gfnff topology lists

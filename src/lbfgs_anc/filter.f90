@@ -15,7 +15,7 @@
 ! along with ancopt.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_pbc_optimizer_filter
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule, only : TMolecule
    use xtb_pbc_optimizer_filter_cart, only : cartesian_filter, new_cartesian_filter
    !use xtb_pbc_optimizer_filter_anc, only : anc_input

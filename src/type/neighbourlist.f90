@@ -19,7 +19,7 @@
 !>
 !> Based on the implementation used in DFTB+ (see module dftbp_periodic there)
 module xtb_type_neighbourlist
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_search, only : bisectSearch
    use xtb_mctc_sort, only : indexHeapSort
    use xtb_mctc_thresholds, only : tolSameDist2, minNeighDist2

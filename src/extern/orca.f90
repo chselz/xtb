@@ -17,7 +17,7 @@
 
 module xtb_extern_orca
 !$ use omp_lib
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_filetypes, only: fileType
    use xtb_mctc_symbols, only: toSymbol
    use xtb_type_calculator, only: TCalculator

@@ -22,7 +22,7 @@
 !> edited by W. M. Haynes (CRC Press, Boca Raton, FL, 2010), pages 9-49-9-50;
 !> corrected Nov. 17, 2010 for the 92nd edition.
 module xtb_param_atomicrad
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    use xtb_mctc_symbols, only : toNumber
    implicit none

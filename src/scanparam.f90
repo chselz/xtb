@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_scanparam
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_setvar
    use xtb_constrainpot
    implicit none

@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine main_geometry(iunit,mol)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    implicit none
    integer, intent(in)  :: iunit
@@ -31,7 +31,7 @@ subroutine main_geometry(iunit,mol)
 end subroutine main_geometry
 
 subroutine print_pbcsum(iunit,mol)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_convert
    use xtb_type_molecule
@@ -114,7 +114,7 @@ end subroutine print_pbcsum
 
 
 subroutine print_geosum(iunit,n,at,sym,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_convert
    use xtb_setparam
@@ -205,7 +205,7 @@ subroutine print_geosum(iunit,n,at,sym,xyz)
 end subroutine print_geosum
 
 subroutine print_elem_dist(iunit,n,nbond,bond,dist,maxd,mind)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    use xtb_mctc_symbols, only : toSymbol
    implicit none
@@ -235,7 +235,7 @@ subroutine print_elem_dist(iunit,n,nbond,bond,dist,maxd,mind)
 end subroutine print_elem_dist
 
 subroutine print_distances(iunit,n,at,sym,ndist,dist,id)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    use xtb_mctc_symbols, only : toSymbol
    implicit none
@@ -275,7 +275,7 @@ subroutine print_distances(iunit,n,at,sym,ndist,dist,id)
 end subroutine print_distances
 
 subroutine print_angles(iunit,n,at,sym,nbend,bend,ib)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_symbols, only : toSymbol
    implicit none
@@ -308,7 +308,7 @@ subroutine print_angles(iunit,n,at,sym,nbend,bend,ib)
 end subroutine print_angles
 
 subroutine print_torsions(iunit,n,at,sym,ntrsn,trsn,it)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_symbols, only : toSymbol
    implicit none
@@ -344,7 +344,7 @@ end subroutine print_torsions
 
 subroutine calc_distances(n,at,xyz,bond,maxdist,ndist,dist,id, &
       maxelem,nelem,ndel,distel,maxdel,mindel)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer,    intent(in)  :: n
    integer,    intent(in)  :: at(n)
@@ -418,7 +418,7 @@ subroutine calc_distances(n,at,xyz,bond,maxdist,ndist,dist,id, &
 end subroutine calc_distances
 
 subroutine calc_angles(n,at,xyz,bond,maxbend,nbend,bend,ib)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer,    intent(in)  :: n
    integer,    intent(in)  :: at(n)
@@ -461,7 +461,7 @@ subroutine calc_angles(n,at,xyz,bond,maxbend,nbend,bend,ib)
 end subroutine calc_angles
 
 subroutine calc_torsions(n,at,xyz,bond,maxtrsn,ntrsn,trsn,it)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer,    intent(in)  :: n
    integer,    intent(in)  :: at(n)
@@ -505,7 +505,7 @@ subroutine calc_torsions(n,at,xyz,bond,maxtrsn,ntrsn,trsn,it)
 end subroutine calc_torsions
 
 subroutine get_bonds(n,at,xyz,bond)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_param, only: rad => covalent_radius_2009
    implicit none
    integer, intent(in)  :: n
@@ -539,7 +539,7 @@ subroutine get_bonds(n,at,xyz,bond)
 end subroutine get_bonds
 
 subroutine print_moments(iunit,n,atmass,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    implicit none
    integer, intent(in)  :: iunit
@@ -563,7 +563,7 @@ subroutine print_moments(iunit,n,atmass,xyz)
 contains
 
 pure function moments_of_inertia(n,atmass,xyz) result(moments)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_lapack, only : lapack_spev
    use xtb_mctc_convert
    implicit none
@@ -598,7 +598,7 @@ pure function moments_of_inertia(n,atmass,xyz) result(moments)
 end function moments_of_inertia
 
 pure function center_of_mass(n,atmass,xyz) result(center)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)  :: n
    real(wp),intent(in)  :: atmass(n)
@@ -613,7 +613,7 @@ pure function center_of_mass(n,atmass,xyz) result(center)
 end function center_of_mass
 
 pure function molecular_mass(n,atmass) result(molmass)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    implicit none
    integer, intent(in) :: n
@@ -626,7 +626,7 @@ end subroutine print_moments
 
 
 subroutine check_cold_fusion(env, mol, cold_fusion)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_environment
    use xtb_type_molecule
    type(TEnvironment), intent(inout) :: env

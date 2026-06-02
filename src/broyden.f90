@@ -36,7 +36,7 @@ contains
 
 subroutine broyden(n,q,qlast,dq,dqlast,iter,maxiter,&
       &                   alpha,omega,df,u,a)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    integer i,j
@@ -156,7 +156,7 @@ end subroutine broyden
 
 
 subroutine matinv(a, nrow)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_lapack, only : lapack_getrf, lapack_getri
    integer nRow
    real(wp) a(nrow,nrow)

@@ -37,7 +37,7 @@ end subroutine collect_wsc
 
 
 subroutine test_wigner_seitz_0d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    use xtb_type_wsc
    type(error_type), allocatable, intent(out) :: error
@@ -66,7 +66,7 @@ subroutine test_wigner_seitz_0d(error)
 end subroutine test_wigner_seitz_0D
 
 subroutine test_wigner_seitz_3D(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_type_molecule
    use xtb_type_wsc

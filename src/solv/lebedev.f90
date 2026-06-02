@@ -23,7 +23,7 @@
 !  131st algebraic order of accuracy", Doklady Mathematics, Vol. 59, No. 3,
 !  1999, pp. 477-481.
 module xtb_solv_lebedev
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    private

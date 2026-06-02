@@ -37,7 +37,7 @@ end subroutine collect_pbc_tools
 
 
 subroutine test_pbc_tools_convert(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_pbc_tools
    type(error_type), allocatable, intent(out) :: error
    real(wp),parameter :: thr = 1.0e-10_wp
@@ -83,7 +83,7 @@ subroutine test_pbc_tools_convert(error)
 end subroutine test_pbc_tools_convert
 
 subroutine test_pbc_tools_cutoff(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_pbc_tools
    use xtb_pbc
    type(error_type), allocatable, intent(out) :: error

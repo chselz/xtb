@@ -1,5 +1,5 @@
 subroutine test_pbc_lancopt
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use assertion
 
    use xtb_type_molecule

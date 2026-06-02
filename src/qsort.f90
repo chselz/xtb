@@ -17,7 +17,7 @@
 
 !> QuickSort algorithm
 recursive subroutine qsort(a, first, last, ind)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    
    !> input array
@@ -62,7 +62,7 @@ recursive subroutine qsort(a, first, last, ind)
 end subroutine qsort
 
 recursive subroutine qqsort(a, first, last)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
   implicit none
   real(wp) :: a(*), x, t
   integer  :: first, last

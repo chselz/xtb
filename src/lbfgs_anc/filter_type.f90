@@ -15,7 +15,7 @@
 ! along with ancopt.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_pbc_optimizer_filter_type
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule, only : TMolecule
    implicit none
    private

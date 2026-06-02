@@ -17,7 +17,7 @@
 
 module xtb_mctc_timings
    use, intrinsic :: iso_fortran_env, only : int64, output_unit
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    public  :: init_timing,start_timing_run,stop_timing_run

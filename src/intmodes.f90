@@ -21,7 +21,7 @@ contains
 
 ! project cartesian on internal mode to determine str, bend, tors
 subroutine intmodestep(n,bmat,u,step,geo,na,nb,nc,coord)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: n
    integer, intent(in)    :: na(n),nb(n),nc(n)
@@ -64,7 +64,7 @@ end subroutine intmodestep
 
 ! project cartesian on internal mode to determine str, bend, tors
 pure subroutine modetyp(n,bmat,u,root,vtyp)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: n
    integer, intent(in) :: root
@@ -104,7 +104,7 @@ end subroutine modetyp
 
 ! bmatrix dzmat/dxyz
 subroutine bzmat(n,at,xyzin,bmat)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: n,at(n)
    real(wp),intent(in) :: xyzin(3,n)
@@ -172,7 +172,7 @@ end subroutine
 
 subroutine makenabc(xyzin,molvec,at,nat,n,n2,nmol,&
       &                    fragind,na,nb,nc)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: n,n2
    integer, intent(inout) :: na(n2), nb(n2), nc(n2)
@@ -263,7 +263,7 @@ end subroutine makenabc
 
 subroutine cart2zmat(xyzin,molvec,at,nat,n,n2,nmol,&
       &                    fragind,na,nb,nc,geo)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: n,n2
    integer, intent(in) :: na(n2), nb(n2), nc(n2)
@@ -310,7 +310,7 @@ end subroutine cart2zmat
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 pure subroutine bonded(i,na,nb,nc,ind,n,molvec)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer,intent(in) :: i,n,ind(n,n)
    integer,intent(in) :: molvec(n)
@@ -386,7 +386,7 @@ end subroutine bonded
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine zmat2cart(n,n2,at,geo,xyz,na,nb,nc,fail)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: n,n2
    integer, intent(in) :: na(n2),nb(n2),nc(n2)
@@ -468,7 +468,7 @@ end subroutine
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine xyzgeo(xyz,numat,na,nb,nc,degree,geo)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: numat
    real(wp),intent(in)    :: xyz(3,numat)
@@ -550,7 +550,7 @@ end subroutine xyzgeo
 
 !     *****************************************************************
 subroutine xyzint(xyz,numat,na,nb,nc,degree,geo)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: numat
    real(wp),intent(in)    :: xyz(3,numat)
@@ -620,7 +620,7 @@ subroutine xyzint(xyz,numat,na,nb,nc,degree,geo)
 end subroutine xyzint
 
 pure subroutine bangle(xyz,i,j,k,angle)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: i,j,k
    real(wp),intent(in) :: xyz(3,*)
@@ -648,7 +648,7 @@ pure subroutine bangle(xyz,i,j,k,angle)
    angle = acos( temp )
 end subroutine bangle
 subroutine dihed(xyz,i,j,k,l,angle)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in)    :: i,j,k,l
    real(wp),intent(inout) :: angle
@@ -715,7 +715,7 @@ subroutine dihed(xyz,i,j,k,l,angle)
    !sg   if (angle .ge. 2.0d0*pi    ) angle=0.d0
 end subroutine dihed
 pure subroutine dang(a1,a2,b1,b2,rcos)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp),intent(inout) :: a1,a2,b1,b2
    real(wp),intent(out)   :: rcos
@@ -753,7 +753,7 @@ end subroutine dang
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 pure subroutine gmetry(natoms, geo, coord, na,nb,nc,fail)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    integer, intent(in)    :: natoms
@@ -895,7 +895,7 @@ pure subroutine gmetry(natoms, geo, coord, na,nb,nc,fail)
 end subroutine gmetry
 
 pure subroutine cma(nat,at,xyz,sum3)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    ! atomic masses
    use xtb_splitparam
    implicit none

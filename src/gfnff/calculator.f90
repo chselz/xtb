@@ -17,7 +17,7 @@
 
 !> Force field calculator
 module xtb_gfnff_calculator
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_solv_gbsa, only : TBorn, init
    use xtb_solv_model, only : info, newBornModel
    use xtb_type_calculator, only : TCalculator

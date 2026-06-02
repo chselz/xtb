@@ -18,7 +18,7 @@
 !> TODO
 module xtb_type_vendordata
    use mctc_io_structure_info, only : structure_info, pdb_data, sdf_data
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
 

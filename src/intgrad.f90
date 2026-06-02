@@ -20,7 +20,7 @@
 !  we use a hardcoded horizontal Obara--Saika recursion relation to get
 !  the job done, this is working code, so think twice before modifying it!
 module xtb_intgrad
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi
    implicit none
 

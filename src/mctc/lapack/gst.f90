@@ -17,7 +17,7 @@
 
 !> Helper routines to transform generalized eigenvalue problems in standard form.
 module xtb_mctc_lapack_gst
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    use xtb_type_environment, only : TEnvironment
    implicit none
    private

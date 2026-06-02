@@ -17,7 +17,7 @@
 
 subroutine zmatpr(nat,at,geo,na,nb,nc,molnum)
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_symbols, only : toSymbol
    implicit none

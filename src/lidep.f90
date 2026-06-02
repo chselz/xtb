@@ -31,7 +31,7 @@
 ! P.Pracht, May 2019
 !----------------------------------------------------------------------------------------------
 module xtb_lineardep
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_lapack, only : lapack_sygvd, lapack_syev
    use xtb_setparam, only: set
    use xtb_mctc_blas, only : blas_gemm, blas_symm

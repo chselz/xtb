@@ -37,7 +37,7 @@ end subroutine collect_repulsion
 
 
 subroutine test_repulsion_cluster(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : sqrtpi
    use xtb_mctc_la, only : contract
    use xtb_type_environment
@@ -150,7 +150,7 @@ subroutine test_repulsion_cluster(error)
 end subroutine test_repulsion_cluster
 
 subroutine test_repulsion_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi, sqrtpi
    use xtb_mctc_convert
    use xtb_mctc_la, only : contract

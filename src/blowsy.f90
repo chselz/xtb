@@ -18,7 +18,7 @@ module xtb_blowsy
 contains
 
 pure subroutine blowsy(ity,a,b,n)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    ! blow up symmetric or antisymmetric matrix to full size
    integer, intent(in)  :: ity

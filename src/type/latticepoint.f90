@@ -17,7 +17,7 @@
 
 !> Generator for lattice points
 module xtb_type_latticepoint
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_boundaryconditions, only : boundaryCondition
    use xtb_mctc_math, only : crossProd
    use xtb_mctc_search, only : bisectSearch

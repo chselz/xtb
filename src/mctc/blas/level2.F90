@@ -17,7 +17,7 @@
 
 !> Interfaces to BLAS
 module xtb_mctc_blas_level2
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
 #ifdef USE_CUBLAS
    use cublas, only : cublasSgemv, cublasDgemv, cublasSger, cublasDger, &
       & cublasSspmv, cublasDspmv, cublasSspr, cublasDspr, &

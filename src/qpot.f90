@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine qpotini(natoms,iat,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_setparam
    use xtb_fixparam
    implicit none
@@ -50,7 +50,7 @@ subroutine qpotini(natoms,iat,xyz)
 end subroutine qpotini
 
 subroutine countfix(nat,nfix,fname)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_strings, only : lowercase
    implicit none
    real(wp) xx(10)
@@ -86,7 +86,7 @@ end subroutine countfix
 
 
 subroutine rdfix(nat,n,xyz,iat,fname,fixed)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_strings, only : lowercase
    implicit none
    real(wp) xyz(3,*), xx(10)
@@ -159,7 +159,7 @@ end subroutine getf
 
 ! special routine for the Ln fit for Xrays
 subroutine fixmetal(n,iat,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_fixparam
    implicit none
    integer n,iat(n),nb(0:20,n),nn,ifix(n)
@@ -192,7 +192,7 @@ end subroutine fixmetal
 
 
 subroutine neighbor(natoms,xyz,iz,nb)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer iz(*),natoms,nb(0:20,*)
    real(wp)  xyz(3,*)

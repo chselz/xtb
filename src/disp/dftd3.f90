@@ -17,7 +17,7 @@
 
 !> Implementation of DFT-D3 with Becke-Johnson damping
 module xtb_disp_dftd3
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la, only : contract
    use xtb_disp_dftd3param
    use xtb_param_sqrtzr4r2, only : sqrtZr4r2

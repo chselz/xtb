@@ -18,7 +18,7 @@ module xtb_dipole
 contains
 
 subroutine Dints(n,nbf,xyz,S1,S2,S3,basis)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_type_basisset
    use xtb_intpack, only : opab1,propa
@@ -92,7 +92,7 @@ subroutine Dints(n,nbf,xyz,S1,S2,S3,basis)
 end subroutine Dints
 
 subroutine calc_dipole(n,at,xyz,z,nao,P,dpint,dip,d)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    implicit none
    integer, intent(in) :: n

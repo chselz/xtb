@@ -15,7 +15,7 @@
 ! You should have received a copy of the GNU Lesser General Public License
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 module xtb_biaspath
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
 
@@ -462,7 +462,7 @@ end subroutine bias_path
 !  remove unecessary points
 !! ========================================================================
 subroutine screenpath(np,npwanted,npnew,n,xyz,e,xyzdum)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_environment
    implicit none
    integer   n,np,npwanted,npnew
@@ -512,7 +512,7 @@ end subroutine
 !! ========================================================================
 
 subroutine metadyn_tsmode(n,sn,its,xyzpath,xyzact,kpull)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_metadynamic
    use xtb_fixparam
    implicit none
@@ -552,7 +552,7 @@ end subroutine
 !! ========================================================================
 
 subroutine guess_tsmode(n,sn,its,xyz,pvec1,pvec2)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer   n,its,sn
    real(wp)  xyz(3,n,sn)

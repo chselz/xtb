@@ -17,7 +17,7 @@
 
 !> Implementation of a map from element symbols/atomic numbers to ids
 module xtb_type_identitymap
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_resize, only : resize
    use xtb_type_molecule, only : TMolecule
    implicit none

@@ -17,7 +17,7 @@
 
 !> Implementation of the repulsion energy used in the xTB Hamiltonian
 module xtb_xtb_repulsion
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_identitymap, only : TIdentityMap
    use xtb_type_molecule, only : TMolecule, len
    use xtb_type_neighbourlist, only : TNeighbourlist

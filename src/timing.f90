@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine timing(t,w)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    real(wp) :: t,w
    integer :: time_count,time_rate,time_max
    call system_clock(time_count,time_rate,time_max)
@@ -26,7 +26,7 @@ end subroutine timing
 
 
 subroutine prtime(io,tt,ww,string)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    integer  :: io
    real(wp) :: ww,tt,t,tsec,wsec
    integer  :: tday,thour,tmin

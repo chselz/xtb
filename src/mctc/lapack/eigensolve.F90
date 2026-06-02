@@ -18,7 +18,7 @@
 
 !> Wrapper for eigensolver routines
 module xtb_mctc_lapack_eigensolve
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    use xtb_mctc_blas_level3, only : blas_trsm
    use xtb_mctc_lapack_geneigval, only : lapack_sygvd
    use xtb_mctc_lapack_stdeigval, only : lapack_syevd

@@ -17,7 +17,7 @@
 
 !> Compare and generate topological information from wavefunctions
 module xtb_topology
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : fileType, generateFileName
    use xtb_io_writer, only : writeMolecule
    use xtb_type_molecule, only : TMolecule, len

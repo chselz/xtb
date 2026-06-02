@@ -17,7 +17,7 @@
 
 !> Force field topology generator
 module xtb_prog_topology
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : getFileType, fileType
    use xtb_mctc_systools, only : rdpath, getline
    use xtb_mctc_timings

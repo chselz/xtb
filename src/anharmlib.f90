@@ -25,7 +25,7 @@ contains
 ! nstat is the number of stationary points found
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 subroutine curveanal(n,xx,yy,yy1,yy2,list,ityp,nstat,eps)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer n
    real(wp) xx(n),yy(n),yy1(n),yy2(n),eps

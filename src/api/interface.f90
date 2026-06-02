@@ -18,7 +18,7 @@
 !> Actual calculation interface
 module xtb_api_interface
    use, intrinsic :: iso_c_binding
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_api_calculator
    use xtb_api_environment
    use xtb_api_molecule

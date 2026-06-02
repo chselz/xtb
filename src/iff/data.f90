@@ -17,7 +17,7 @@
 
 !> Topological data for force field type calculations
 module xtb_iff_data
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_molecule, only: TMolecule
    implicit none
    private

@@ -17,7 +17,7 @@
 
 !> Atomic r4/r2 expectation values
 module xtb_param_sqrtzr4r2
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_symbols, only : toNumber
    implicit none
    private

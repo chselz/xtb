@@ -89,7 +89,7 @@ subroutine gfnff_setup(env,verbose,restart,mol,gen,param,topo,neigh,accuracy,efi
 end subroutine gfnff_setup
 
 subroutine gfnff_input(env, mol, topo, neigh)
-  use xtb_mctc_accuracy, only : wp
+  use mctc_env, only : wp
   use xtb_type_environment, only : TEnvironment
   use xtb_type_molecule
   use xtb_mctc_filetypes, only : fileType

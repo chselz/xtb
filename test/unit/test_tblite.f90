@@ -17,7 +17,7 @@
 module test_tblite
    use testdrive, only : new_unittest, unittest_type, error_type, check_ => check, &
       & test_failed, skip_test
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_features, only : get_xtb_feature
    use xtb_tblite_calculator, only : TTBLiteCalculator, TTBLiteInput, &
       & TTBLiteSolvationInput, newTBLiteCalculator, newTBLiteWavefunction
@@ -170,7 +170,7 @@ end subroutine test_gfn1
 
 
 subroutine test_gfn2_mindless_basic(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -323,7 +323,7 @@ end subroutine test_gfn1_mindless_basic
 
 
 subroutine test_gfn1_mindless_gbsa(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -397,7 +397,7 @@ end subroutine test_gfn1_mindless_gbsa
 
 
 subroutine test_gfn2_mindless_alpb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -471,7 +471,7 @@ end subroutine test_gfn2_mindless_alpb
 
 
 subroutine test_gfn1_mindless_gb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -543,7 +543,7 @@ end subroutine test_gfn1_mindless_gb
 
 
 subroutine test_gfn2_mindless_gbe(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -615,7 +615,7 @@ end subroutine test_gfn2_mindless_gbe
 
 
 subroutine test_gfn1_mindless_cosmo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -687,7 +687,7 @@ end subroutine test_gfn1_mindless_cosmo
 
 
 subroutine test_gfn2_mindless_cosmo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -759,7 +759,7 @@ end subroutine test_gfn2_mindless_cosmo
 
 
 subroutine test_mindless_efield(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule

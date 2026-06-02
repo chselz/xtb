@@ -2,7 +2,7 @@ module xtb_gfnff_neighbor
   use xtb_type_latticepoint, only : TLatticePoint, init_ => init_l 
   use xtb_type_molecule, only : TMolecule
   use xtb_gfnff_data, only : TGFFData
-  use xtb_mctc_accuracy, only : wp
+  use mctc_env, only : wp
   use xtb_type_environment, only : TEnvironment
   use xtb_mctc_sort
 

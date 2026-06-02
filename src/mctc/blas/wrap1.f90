@@ -17,7 +17,7 @@
 
 !> Wrappers for BLAS
 module xtb_mctc_blas_wrap1
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    use xtb_mctc_blas_level1, only : mctc_asum, mctc_axpy, mctc_copy, mctc_dot, &
       & mctc_nrm2, mctc_rot, mctc_scal, mctc_swap, mctc_iamax
    implicit none

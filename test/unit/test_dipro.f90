@@ -40,7 +40,7 @@ end subroutine collect_dipro
 ! Unit test for dipro
 !---------------------------------------------
 subroutine test_dipro_jabeff(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_convert, only : aatoau
 

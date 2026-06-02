@@ -18,7 +18,7 @@
 !> API for dealing with the calculation environment
 module xtb_api_environment
    use, intrinsic :: iso_c_binding
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io
    use xtb_api_utils
    use xtb_type_environment

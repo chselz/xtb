@@ -41,7 +41,7 @@ end subroutine collect_eeq
 
 
 subroutine test_eeq_water(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_coulomb_gaussian, only : TGaussianSmeared, init
    use xtb_disp_coordinationnumber, only : getCoordinationNumber, cnType
@@ -137,7 +137,7 @@ end subroutine test_eeq_water
 
 
 subroutine test_eeq_ewald(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_coulomb_gaussian, only : TGaussianSmeared, init
    use xtb_disp_coordinationnumber, only : getCoordinationNumber, cnType, &
@@ -374,7 +374,7 @@ subroutine test_eeq_ewald(error)
 end subroutine test_eeq_ewald
 
 subroutine test_eeq_model_gbsa(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_type_environment
    use xtb_type_molecule
@@ -499,14 +499,14 @@ subroutine test_eeq_model_gbsa(error)
 end subroutine test_eeq_model_gbsa
 
 subroutine test_eeq_model_hbond(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    type(error_type), allocatable, intent(out) :: error
    call skip_test(error, "Not implemented")
 end subroutine test_eeq_model_hbond
 
 subroutine test_eeq_model_salt(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_convert, only : aatoau
    use xtb_type_environment

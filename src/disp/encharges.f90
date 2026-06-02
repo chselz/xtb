@@ -17,7 +17,7 @@
 
 !> Convenience wrapper for charge equilibration model
 module xtb_disp_encharges
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_coulomb_gaussian, only : TGaussianSmeared, init
    use xtb_type_environment, only : TEnvironment
    use xtb_type_molecule, only : TMolecule

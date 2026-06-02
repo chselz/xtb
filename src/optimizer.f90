@@ -17,7 +17,7 @@
 
 module xtb_optimizer
    use xtb_io_writer, only : writeMolecule
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    use xtb_mctc_fileTypes, only : fileType
    use xtb_type_environment, only : TEnvironment
    use xtb_extern_turbomole, only : TTMCalculator

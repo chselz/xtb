@@ -17,7 +17,7 @@
 
 !> LAPACK linear equation solvers.
 module xtb_mctc_lapack_trs
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    use xtb_type_environment, only : TEnvironment
    implicit none
    private

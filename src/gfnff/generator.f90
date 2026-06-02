@@ -17,7 +17,7 @@
 
 !> Data for the generation of a force field topology
 module xtb_gfnff_generator
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    implicit none
    private
 

@@ -25,7 +25,7 @@ contains
 subroutine struc_convert( &
          & env,restart,mol,chk,egap,et,maxiter,maxcycle,&
          & etot,g,sigma)
-  use xtb_mctc_accuracy, only : wp
+  use mctc_env, only : wp
   use xtb_gfnff_param
   use xtb_gfnff_setup
   use xtb_disp_dftd3param

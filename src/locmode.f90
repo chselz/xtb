@@ -20,7 +20,7 @@
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine locmode(n,n3,at,xyz,vthr,freq,rmass,uin,ng,group)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : blas_gemm
    implicit none
    integer n,n3,at(n),ng,group(n)

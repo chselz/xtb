@@ -22,7 +22,7 @@
 !> Robert F. Stewart, Small Gaussian Expansions of Slater-Type Orbitals,
 !> J. Chem. Phys. 52, 431-438 (1970). DOI: 10.1063/1.1672702
 module xtb_slater
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi
    implicit none
    private

@@ -17,7 +17,7 @@
 
 !> Neighbourlists for the GFN-FF
 module xtb_gfnff_neighbourlist
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
 

@@ -16,14 +16,14 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_thermo
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
 contains
 
 subroutine getsymmetry (pr, iunit, n, iat, xyz, symthr, maxatdesy, sfsym)
    use iso_c_binding, only: c_char, c_null_char
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: iunit
    integer n, iat(n), maxatdesy
@@ -78,7 +78,7 @@ End subroutine getsymmetry
 
 subroutine thermodyn(iunit,A_rcm,B_rcm,C_rcm,avmom_si,linear,atom,sym,molmass, &
       &              vibs,nvibs,escf,T,sthr_rcm,et,ht,g,ts,zp,pr)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants
    use xtb_mctc_convert
    implicit none

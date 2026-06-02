@@ -471,7 +471,7 @@ subroutine gfnff_neigh(env,makeneighbor,natoms,at,xyz,rab,fq,f_in,f2_in,lintr, &
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
       subroutine nn_nearest_noM(ii,n,at,xyz,neigh,r,nn,param)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none
       type(TGFFData), intent(in) :: param
       type(TNeigh), intent(in) :: neigh
@@ -762,7 +762,7 @@ subroutine gfnff_neigh(env,makeneighbor,natoms,at,xyz,rab,fq,f_in,f2_in,lintr, &
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   subroutine gfnff_hbset(n, at, xyz, topo, neigh, nlist, hbthr1, hbthr2)
-    use xtb_mctc_accuracy, only: wp
+    use mctc_env, only: wp
     use xtb_gfnff_param
     implicit none
     integer, intent(in) :: n
@@ -950,7 +950,7 @@ subroutine gfnff_neigh(env,makeneighbor,natoms,at,xyz,rab,fq,f_in,f2_in,lintr, &
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 subroutine bond_hbset(n,at,xyz,npbc,bond_hbn,bond_hbl,topo,neigh,hbthr1,hbthr2)
-use xtb_mctc_accuracy, only : wp
+use mctc_env, only : wp
       use xtb_gfnff_param
       implicit none
       type(TGFFTopology), intent(in) :: topo
@@ -1022,7 +1022,7 @@ end subroutine bond_hbset
 
 
 subroutine bond_hbset0(n,at,xyz,npbc,bond_hbn,topo,neigh,hbthr1,hbthr2)
-use xtb_mctc_accuracy, only : wp
+use mctc_env, only : wp
       use xtb_gfnff_param
       implicit none
       type(TGFFTopology), intent(in) :: topo
@@ -1334,7 +1334,7 @@ end subroutine bond_hb_AHB_set0
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   subroutine gfnff_hbset0(n, at, xyz, topo, nhb1, nhb2, nxb, neigh, nlist, hbthr1, hbthr2)
-    use xtb_mctc_accuracy, only: wp
+    use mctc_env, only: wp
     use xtb_gfnff_param
     implicit none
     integer, intent(in) :: n
@@ -1637,7 +1637,7 @@ subroutine getring36(n,at,numnb,numctr,nbin,a0_in,cout,irout)
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 subroutine goedeckera(env,n,at,pair,q,es,topo)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_lapack, only : mctc_sytrf, mctc_sytrs
    implicit none
    character(len=*), parameter :: source = 'gfnff_ini2_goedeckera'
@@ -1735,7 +1735,7 @@ end subroutine goedeckera
 
 !> version of EEQ
 subroutine goedeckera_PBC(env,mol,pair,topo,q,es)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_lapack, only : mctc_sytrf, mctc_sytrs
    implicit none
    character(len=*), parameter :: source = 'gfnff_ini2_goedeckera'

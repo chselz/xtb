@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_aoparam
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    use xtb_mctc_param, only: pauling_en, covalent_radius_2010, chemical_hardness, &
       &                  covalent_radius_d3

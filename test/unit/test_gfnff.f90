@@ -45,7 +45,7 @@ end subroutine collect_gfnff
 
 
 subroutine test_gfnff_sp(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_systools
    use xtb_solv_gbsa
    use xtb_type_environment
@@ -132,7 +132,7 @@ subroutine test_gfnff_sp(error)
 end subroutine test_gfnff_sp
 
 subroutine test_gfnff_hb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_systools
    use xtb_type_environment
    use xtb_type_options
@@ -212,7 +212,7 @@ subroutine test_gfnff_hb(error)
 end subroutine test_gfnff_hb
 
 subroutine test_gfnff_gbsa(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_systools
    use xtb_solv_input
    use xtb_type_environment
@@ -304,7 +304,7 @@ end subroutine test_gfnff_gbsa
 
 
 subroutine test_gfnff_mindless_basic(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -376,7 +376,7 @@ end subroutine test_gfnff_mindless_basic
 
 
 subroutine test_gfnff_mindless_solvation(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -456,7 +456,7 @@ end subroutine test_gfnff_mindless_solvation
 
 
 subroutine test_gfnff_scaleup(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -530,7 +530,7 @@ end subroutine test_gfnff_scaleup
 
 
 subroutine test_gfnff_pdb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -599,7 +599,7 @@ end subroutine test_gfnff_pdb
 
 
 subroutine test_gfnff_sdf(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -671,7 +671,7 @@ end subroutine test_gfnff_sdf
 
 
 subroutine test_gfnff_pbc(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -879,7 +879,7 @@ subroutine test_gfnff_pbc(error)
 end subroutine test_gfnff_pbc
 
 subroutine test_gfnff_LnAn_H(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule

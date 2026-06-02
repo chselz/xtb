@@ -36,7 +36,7 @@ end subroutine collect_latticepoint
 
 
 subroutine test_latticepoint_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_boundaryconditions, only : boundaryCondition
    use xtb_mctc_convert, only : aatoau
    use xtb_type_environment, only : TEnvironment, init

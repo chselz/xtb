@@ -17,7 +17,7 @@
 
 ! shift the LP=protonation position to an "empty" region
 subroutine shiftlp(n,at,ia1,xyz,ex,ey,ez)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer n,at(n),ia1
    real(wp) xyz(3,n),ex,ey,ez

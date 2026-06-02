@@ -45,7 +45,7 @@ end subroutine collect_gfn1
 
 
 subroutine test_gfn1_scc(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_environment
@@ -161,7 +161,7 @@ subroutine test_gfn1_scc(error)
 end subroutine test_gfn1_scc
 
 subroutine test_gfn1_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -226,7 +226,7 @@ subroutine test_gfn1_api(error)
 end subroutine test_gfn1_api
 
 subroutine test_gfn1gbsa_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -296,7 +296,7 @@ subroutine test_gfn1gbsa_api(error)
 end subroutine test_gfn1gbsa_api
 
 subroutine test_gfn1_pcem_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -431,7 +431,7 @@ subroutine test_gfn1_pcem_api(error)
 end subroutine test_gfn1_pcem_api
 
 subroutine test_gfn1_xb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -496,7 +496,7 @@ end subroutine test_gfn1_xb
 
 
 subroutine test_gfn1_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_mctc_convert
@@ -578,7 +578,7 @@ end subroutine test_gfn1_pbc3d
 
 
 subroutine test_gfn1_mindless_basic(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -656,7 +656,7 @@ end subroutine test_gfn1_mindless_basic
 
 
 subroutine test_gfn1_mindless_solvation(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -743,7 +743,7 @@ end subroutine test_gfn1_mindless_solvation
 
 
 subroutine test_ipea_indole(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
    use xtb_mctc_systools, only : rdpath
 
@@ -838,7 +838,7 @@ end subroutine test_ipea_indole
 
 
 subroutine test_gfn1_mindless_cosmo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule

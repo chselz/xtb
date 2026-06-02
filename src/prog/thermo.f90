@@ -18,7 +18,7 @@
 !> Thermodynamic functions and hessian post processing
 module xtb_prog_thermo
    use xtb_mctc_blas, only: mctc_gemv, mctc_dot
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_convert, only: autorcm, autoamu, amutoau
    use xtb_mctc_filetypes, only: getFileType, hessType
    use xtb_mctc_timings

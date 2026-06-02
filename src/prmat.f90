@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
       subroutine preig(io,occ,f,e,istart,norbs)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none
       integer, intent(in) :: io
       integer, intent(in) :: istart
@@ -57,7 +57,7 @@
       end subroutine preig
 
       SUBROUTINE PREIG2(IO,OCC,E,NORBS)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none
       integer, intent(in) :: io
       integer, intent(in) :: norbs

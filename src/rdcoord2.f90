@@ -24,7 +24,7 @@
 subroutine rdcoord(fname,n,xyz,iat)
    use xtb_mctc_global, only : persistentEnv
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    use xtb_mctc_systools
    use xtb_setmod
@@ -104,7 +104,7 @@ subroutine rdcoord(fname,n,xyz,iat)
 end subroutine rdcoord
 
 subroutine rdatomnumber(fname,n)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    implicit none
    character(len=*) :: fname
@@ -171,7 +171,7 @@ end subroutine rdatomnumber
 !reads a line cuts the at blanks and tabstops and returns all floats and strings in order of occurence
 subroutine readline(line,floats,strings,cs,cf)
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp) :: floats(3)
    character(len=*),intent(in) :: line
@@ -230,7 +230,7 @@ end subroutine readline
 !CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
 subroutine rdxyz(fname,n,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    implicit integer (i-n)
    implicit real(wp) (a-h,o-z)
@@ -269,7 +269,7 @@ end subroutine rdxyz
 
 subroutine rdsdf(fname,n,xyz,iat)
    use xtb_mctc_global, only : persistentEnv
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    use xtb_mctc_systools
    use xtb_setmod

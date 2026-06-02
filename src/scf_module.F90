@@ -17,7 +17,7 @@
 
 module xtb_scf
 ! ========================================================================
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autoev,evtoau
    use xtb_mctc_blas, only : mctc_gemv
    use xtb_mctc_lapack_eigensolve, only : TEigenSolver, init

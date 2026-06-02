@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_gfnff_gdisp0
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la, only : contract
    use xtb_param_sqrtzr4r2, only : sqrtZr4r2
    use xtb_type_molecule

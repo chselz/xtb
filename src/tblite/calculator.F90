@@ -51,7 +51,7 @@ module xtb_tblite_calculator
    use xtb_tblite_mapping, only : convert_tblite_to_wfn
 #endif
    use xtb_tblite_mapping, only : convert_tblite_to_results
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_calculator, only : TCalculator
    use xtb_type_data
    use xtb_type_environment, only : TEnvironment

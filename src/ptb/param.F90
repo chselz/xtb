@@ -22,7 +22,7 @@
 !> PTB parametrization data
 module xtb_ptb_param
 #if WITH_TBLITE
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_ptb_data, only: init, &
    & TPTBData, TCorePotentialData, THamiltonianData, &
       TEEQData, TPauliXCData, TCoulombData, TPlusU, TResponse

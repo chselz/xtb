@@ -17,7 +17,7 @@
 
 !> TODO: GFN0-xTB parametrisation data
 module xtb_xtb_gfn0
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_param_atomicrad, only : atomicRad
    use xtb_type_param, only : TxTBParameter
    use xtb_xtb_data

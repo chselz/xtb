@@ -43,7 +43,7 @@ end subroutine collect_coulomb
 
 
 subroutine test_coulomb_point_cluster(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la, only : contract
    use xtb_type_coulomb
    use xtb_type_environment
@@ -190,7 +190,7 @@ subroutine test_coulomb_point_cluster(error)
 end subroutine test_coulomb_point_cluster
 
 subroutine test_coulomb_point_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi, sqrtpi
    use xtb_mctc_convert
    use xtb_mctc_la, only : contract
@@ -365,7 +365,7 @@ end subroutine test_coulomb_point_pbc3d
 
 
 subroutine test_coulomb_gfn1_cluster(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la, only : contract
    use xtb_type_environment
    use xtb_coulomb_klopmanohno
@@ -622,7 +622,7 @@ subroutine test_coulomb_gfn1_cluster(error)
 end subroutine test_coulomb_gfn1_cluster
 
 subroutine test_coulomb_gfn1_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi, sqrtpi
    use xtb_mctc_convert
    use xtb_mctc_la, only : contract
@@ -826,7 +826,7 @@ end subroutine test_coulomb_gfn1_pbc3d
 
 
 subroutine test_coulomb_gfn2_cluster(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la, only : contract
    use xtb_type_environment
    use xtb_coulomb_klopmanohno
@@ -1079,7 +1079,7 @@ subroutine test_coulomb_gfn2_cluster(error)
 end subroutine test_coulomb_gfn2_cluster
 
 subroutine test_coulomb_gfn2_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi, sqrtpi
    use xtb_mctc_convert
    use xtb_mctc_la, only : contract
@@ -1281,7 +1281,7 @@ end subroutine test_coulomb_gfn2_pbc3d
 
 
 subroutine test_coulomb_gaussian_cluster(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : sqrtpi
    use xtb_mctc_la, only : contract
    use xtb_coulomb_gaussian
@@ -1432,7 +1432,7 @@ end subroutine test_coulomb_gaussian_cluster
 
 
 subroutine test_coulomb_gaussian_pbc3d(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi, sqrtpi
    use xtb_mctc_convert
    use xtb_mctc_la, only : contract

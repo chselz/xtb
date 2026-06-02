@@ -17,7 +17,7 @@
 
 !> LAPACK eigenproblem solvers
 module xtb_mctc_lapack_stdeigval
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    implicit none
    private
 

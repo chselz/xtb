@@ -18,7 +18,7 @@
 !> Supported file types in this program
 module xtb_mctc_filetypes
    use mctc_io_filetype, only : filetype, getFileType => get_filetype
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_chartools, only : toLowercase
    implicit none
    private

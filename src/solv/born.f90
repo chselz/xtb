@@ -17,7 +17,7 @@
 
 !> Implementation of the Born radii integrator
 module xtb_solv_born
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : mctc_scal
    implicit none
    private

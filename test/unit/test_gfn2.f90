@@ -46,7 +46,7 @@ end subroutine collect_gfn2
 
 
 subroutine test_gfn2_scc(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_environment
@@ -170,7 +170,7 @@ subroutine test_gfn2_scc(error)
 end subroutine test_gfn2_scc
 
 subroutine test_gfn2_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -235,7 +235,7 @@ subroutine test_gfn2_api(error)
 end subroutine test_gfn2_api
 
 subroutine test_gfn2gbsa_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -308,7 +308,7 @@ subroutine test_gfn2gbsa_api(error)
 end subroutine test_gfn2gbsa_api
 
 subroutine test_gfn2salt_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_convert, only : aatoau
 
@@ -381,7 +381,7 @@ subroutine test_gfn2salt_api(error)
 end subroutine test_gfn2salt_api
 
 subroutine test_gfn2_pcem_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -521,7 +521,7 @@ subroutine test_gfn2_pcem_api(error)
 end subroutine test_gfn2_pcem_api
 
 subroutine test_gfn2_pcem_io(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -665,7 +665,7 @@ subroutine test_gfn2_pcem_io(error)
 end subroutine test_gfn2_pcem_io
 
 subroutine test_gfn2_mindless_basic(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -743,7 +743,7 @@ end subroutine test_gfn2_mindless_basic
 
 
 subroutine test_gfn2_mindless_solvation(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -829,7 +829,7 @@ end subroutine test_gfn2_mindless_solvation
 
 
 subroutine test_gfn2_dmetal(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -902,7 +902,7 @@ end subroutine test_gfn2_dmetal
 
 
 subroutine test_gfn2_mindless_cosmo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -985,7 +985,7 @@ subroutine test_gfn2_mindless_cosmo(error)
 end subroutine test_gfn2_mindless_cosmo
 
 subroutine test_gfn2_wbo(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use mctc_io_convert, only : aatoau
    use xtb_test_molstock, only : getMolecule
 

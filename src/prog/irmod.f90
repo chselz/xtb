@@ -17,7 +17,7 @@
 
 !> IR / Raman intensities from DFTB+ Hessians
 module xtb_prog_ir
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autorcm, autoamu
    use xtb_mctc_filetypes, only : getFileType, hessType
    use xtb_mctc_timings

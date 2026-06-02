@@ -20,7 +20,7 @@
 
 !> Restart file for calculations with tblite library
 module xtb_tblite_restart
-   use xtb_mctc_accuracy, only : wp, i8
+   use mctc_env, only : wp, i8
    use xtb_type_environment, only : TEnvironment
    use xtb_type_restart, only : TRestart
    implicit none

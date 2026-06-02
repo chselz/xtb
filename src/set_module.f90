@@ -72,7 +72,7 @@
 !  SAW: ehlert@thch.uni-bonn.de
 !
 module xtb_setmod
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_readin, only : mirror_line,getValue
 

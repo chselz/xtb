@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_mctc_la
-   use xtb_mctc_accuracy, only : wp, sp, dp
+   use mctc_env, only : wp, sp, dp
    use xtb_mctc_lapack
    use xtb_mctc_blas
    use xtb_mctc_blas_wrap3, only : contract => mctc_gemm

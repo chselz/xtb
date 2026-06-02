@@ -41,7 +41,7 @@ end subroutine collect_oniom
 ! Unit test for automatic charge determination
 !---------------------------------------------
 subroutine test_oniom_calculateCharge(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_convert, only : aatoau
 
@@ -138,7 +138,7 @@ endsubroutine test_oniom_calculateCharge
 ! Unit test for cutbond
 !---------------------------------------------
 subroutine test_oniom_cutbond(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_convert, only : aatoau
 
@@ -233,7 +233,7 @@ end subroutine test_oniom_cutbond
 ! Unit test ONIOM sp 
 !---------------------------------------------
 subroutine test_oniom_singlepoint(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_convert, only : autoaa
 

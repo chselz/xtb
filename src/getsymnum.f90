@@ -18,7 +18,7 @@
 
 ! This is the ROTATIONAL symmetry number (sigma)
 pure subroutine getsymnum(pgroup,lin,symnum)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp),intent(out) :: symnum
    character(len=*),intent(in) :: pgroup

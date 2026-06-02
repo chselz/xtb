@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_type_timer
-   use xtb_mctc_accuracy, only : wp, int64 => i8
+   use mctc_env, only : wp, int64 => i8
    implicit none
 
    public :: tb_timer

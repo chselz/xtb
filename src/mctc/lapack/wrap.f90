@@ -17,7 +17,7 @@
 
 !> LAPACK linear equation solvers.
 module xtb_mctc_lapack_wrap
-   use xtb_mctc_accuracy, only : sp, dp
+   use mctc_env, only : sp, dp
    use xtb_mctc_lapack_gst, only : mctc_sygst, mctc_spgst
    use xtb_mctc_lapack_trf, only : mctc_getrf, mctc_sytrf, mctc_sptrf, &
       & mctc_potrf, mctc_pptrf

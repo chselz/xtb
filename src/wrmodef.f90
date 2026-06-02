@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine wrmodef(typ,n,at,xyzin,wbo,rmass,freq,u,udum,vthr,linear)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_intmodes
    implicit none
    integer, intent(in)    :: typ,n,at(n)
@@ -183,7 +183,7 @@ end subroutine wrmodef
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine g98fake(fname,n,at,xyz,freq,u2,u)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer, intent(in) :: n,at(n)
    real(wp),intent(in) :: freq(3*n),xyz(3,n),u2(3*n,3*n)

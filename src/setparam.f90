@@ -20,7 +20,7 @@
 !  here you can define all global variables but no more I/O-stuff
 !! ------------------------------------------------------------------------
 module xtb_setparam
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_solv_kernel, only : gbKernel
    use xtb_solv_input, only : TSolvInput
    use xtb_type_setvar

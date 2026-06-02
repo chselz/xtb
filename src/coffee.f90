@@ -18,7 +18,7 @@ module xtb_coffee
 contains
 
 subroutine get_COFFEE(mol)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule
    type(TMolecule), intent(inout) :: mol
    integer, parameter :: nat = 24

@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
       subroutine gfnffdrab(n,at,cn,dcn,nsrb,srblist,rab,grab,rabdcn)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none
       integer n                 ! number of atoms
       integer at(n)             ! ordinal numbers

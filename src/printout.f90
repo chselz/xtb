@@ -16,14 +16,14 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_printout
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    implicit none
 
 contains
 
 !! ---------------------------------------------------------------[FB1808]-
 subroutine writecosmofile(np,pa,espe,fname,nat,at,xyz,atom_weight)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autoaa
    use xtb_mctc_symbols, only : toLcSymbol, toSymbol
    implicit none
@@ -57,7 +57,7 @@ subroutine writecosmofile(np,pa,espe,fname,nat,at,xyz,atom_weight)
 end subroutine writecosmofile
 
 subroutine setup_summary(iunit,n,fname,xcontrol,wfx,xrc)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_global, only : persistentEnv
    use xtb_mctc_systools
    use xtb_type_wavefunction

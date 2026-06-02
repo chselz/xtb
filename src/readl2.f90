@@ -17,7 +17,7 @@
 
 !cuts the at blanks and tabstops and returns all floats and strings in order of occurence
 subroutine cutline(line,floats,strings)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp) floats(*),num
    character(len=128) line,str,stmp
@@ -67,7 +67,7 @@ end subroutine cutline
 
 !this checks the type of the string and returns it cast to real or as string.
 subroutine checktype(field,num,str,ty)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    character(len=*) field,str
    real(wp) num

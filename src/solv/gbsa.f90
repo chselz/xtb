@@ -17,7 +17,7 @@
 
 !> Implementation for generalized Born and related solvation models
 module xtb_solv_gbsa
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : mctc_dot, mctc_gemv, mctc_symv
    use xtb_mctc_constants, only : fourpi, pi
    use xtb_mctc_convert, only : aatoau

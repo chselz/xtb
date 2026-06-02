@@ -17,7 +17,7 @@
 
 !> Extended tight binding calculator
 module xtb_xtb_calculator
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_solv_gbsa, only : TBorn
    use xtb_solv_model, only : info, newSolvationModel, newBornModel
    use xtb_solv_cpx, only: TCpcmx

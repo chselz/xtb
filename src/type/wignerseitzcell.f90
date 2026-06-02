@@ -17,7 +17,7 @@
 
 !> Wigner-Seitz cell based on a neighbour list
 module xtb_type_wignerseitzcell
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_search, only : bisectSearch
    use xtb_mctc_sort, only : indexHeapSort
    use xtb_mctc_thresholds, only : tolSameDist2, minNeighDist2

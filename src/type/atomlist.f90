@@ -17,7 +17,7 @@
 
 !> implemenation of a list of atoms
 module xtb_type_atomlist
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    public :: TAtomList
    public :: size, len, assignment(=)

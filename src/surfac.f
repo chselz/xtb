@@ -19,7 +19,7 @@
 
       subroutine surfac(fname,n,xyz,at)
       use, intrinsic :: iso_fortran_env, only : output_unit
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       implicit none
       character(len=*),intent(in)       :: fname
       integer, intent(in)               :: n,at(n) !number of atoms,Ordnunszahlen

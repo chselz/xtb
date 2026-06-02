@@ -26,7 +26,7 @@
 module xtb_prog_dock
    use xtb_type_environment, only: TEnvironment, init
    use xtb_prog_argparser, only: TArgParser
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_filetypes, only: getFileType, fileType
    use xtb_mctc_timings
    use xtb_mctc_version, only: version, author, date

@@ -17,7 +17,7 @@
 
 !> Pauling electronegativities
 module xtb_param_paulingen
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_symbols, only : toNumber
    implicit none
    private

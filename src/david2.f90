@@ -23,7 +23,7 @@ contains
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 subroutine sdavid2(n,crite,H,C,e,fail)
-   use xtb_mctc_accuracy, only : wp => sp
+   use mctc_env, only : wp => sp
    use xtb_mctc_lapack, only : lapack_syevd
    use xtb_mctc_blas, only : blas_copy, blas_axpy, blas_dot, blas_spmv
    implicit none
@@ -219,7 +219,7 @@ subroutine sdavid2(n,crite,H,C,e,fail)
 end subroutine sdavid2
 
 subroutine solver_sdavidson(n,crite,Hp,C,e,fail,pr)
-   use xtb_mctc_accuracy, only : wp => sp
+   use mctc_env, only : wp => sp
    use xtb_mctc_lapack, only : lapack_syevd
    use xtb_mctc_blas, only : blas_copy, blas_axpy, blas_dot, mctc_spmv
    implicit none

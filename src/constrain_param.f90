@@ -58,7 +58,7 @@
 !> $end
 !! ========================================================================
 module xtb_constrain_param
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_strings, only : parse
    use xtb_readin, only : getline => strip_line,getValue,getListValue
    use xtb_setparam, only : set

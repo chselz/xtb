@@ -21,7 +21,7 @@
 !  by the cyclic cluster model (CCM). This type is usually bound to
 !  the molecule class but can in principle be used independently.
 module xtb_type_wsc
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    public :: tb_wsc

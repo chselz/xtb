@@ -40,7 +40,7 @@ end subroutine collect_docking
 
 subroutine test_dock_eth_wat_gfn2(error)
    use xtb_type_environment, only: TEnvironment, init
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_environment, only: TEnvironment
    use xtb_type_molecule
    use xtb_setparam, only: initrand
@@ -189,7 +189,7 @@ end subroutine test_dock_eth_wat_gfn2
 
 subroutine test_dock_wat_wat_gfn2_wall(error)
    use xtb_type_environment, only: TEnvironment, init
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_environment, only: TEnvironment
    use xtb_type_molecule
    use xtb_setparam, only: initrand
@@ -340,7 +340,7 @@ end subroutine test_dock_wat_wat_gfn2_wall
 
 subroutine test_dock_wat_wat_gfn2_attpot(error)
    use xtb_type_environment, only: TEnvironment, init
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_environment, only: TEnvironment
    use xtb_type_molecule
    use xtb_setparam, only: initrand
@@ -493,7 +493,7 @@ end subroutine test_dock_wat_wat_gfn2_attpot
 
 subroutine test_dock_wat_wat_gfnff(error)
    use xtb_type_environment, only: TEnvironment, init
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_environment, only: TEnvironment
    use xtb_type_molecule
    use xtb_setparam, only: initrand

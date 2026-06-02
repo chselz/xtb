@@ -18,7 +18,7 @@
 !> API for dealing with the single point calculator
 module xtb_api_calculator
    use, intrinsic :: iso_c_binding
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io
    use xtb_mctc_systools, only : rdpath
    use xtb_api_environment

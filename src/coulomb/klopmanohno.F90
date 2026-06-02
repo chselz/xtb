@@ -17,7 +17,7 @@
 
 !> Generalized Klopman-Ohno electrostatics
 module xtb_coulomb_klopmanohno
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_boundaryconditions, only : boundaryCondition
    use xtb_mctc_constants, only : pi, sqrtpi
    use xtb_mctc_math, only : matInv3x3, matDet3x3

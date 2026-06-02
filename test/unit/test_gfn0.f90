@@ -40,7 +40,7 @@ end subroutine collect_gfn0
 
 
 subroutine test_gfn0_sp(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_mctc_systools
@@ -164,7 +164,7 @@ subroutine test_gfn0_sp(error)
 end subroutine test_gfn0_sp
 
 subroutine test_gfn0_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -233,7 +233,7 @@ subroutine test_gfn0_api(error)
 end subroutine test_gfn0_api
 
 subroutine test_gfn0_api_srb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -326,7 +326,7 @@ end subroutine test_gfn0_api_srb
 
 
 subroutine test_gfn0_mindless_basic(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule
@@ -404,7 +404,7 @@ end subroutine test_gfn0_mindless_basic
 
 
 subroutine test_gfn0_mindless_solvation(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_test_molstock, only : getMolecule
 
    use xtb_type_molecule

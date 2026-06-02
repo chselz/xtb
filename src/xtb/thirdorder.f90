@@ -17,7 +17,7 @@
 
 !> Implementation of the third order electrostatics
 module xtb_xtb_thirdorder
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_xtb_data, only : TCoulombData
    implicit none
    private

@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 subroutine write_tm_basis(iunit,xtbData,nat,at,basis,wfn)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_symbols, only : toLcSymbol
    use xtb_type_wavefunction
    use xtb_type_basisset

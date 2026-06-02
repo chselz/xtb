@@ -17,7 +17,7 @@
 
 !> DFT-D3 Covalent radii for coordination number
 module xtb_param_covalentradd3
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    use xtb_mctc_symbols, only : toNumber
    implicit none

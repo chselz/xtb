@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_aespot
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_intpack, only : olap,divpt,rhftce,prod,opab1,opab4,propa
    use xtb_xtb_data
    integer,private, parameter :: llao (0:3) = (/ 1, 3, 6,10/)

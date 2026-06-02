@@ -24,7 +24,7 @@
 !  later on in the actual optimization.                        - SAW190131
 !! ========================================================================
 module xtb_modelhessian
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert
    use xtb_chargemodel
    implicit none

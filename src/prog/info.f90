@@ -17,7 +17,7 @@
 
 !> Information on the current input geometry
 module xtb_prog_info
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autoamu
    use xtb_mctc_filetypes, only : getFileType
    use xtb_mctc_version, only : version, author, date

@@ -17,7 +17,7 @@
 
 module xtb_embedding
    use, intrinsic :: iso_fortran_env, only : output_unit
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_xtb_data, only : TCoulombData
    implicit none
 !! ========================================================================

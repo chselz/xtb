@@ -167,7 +167,7 @@ logical function samering(n,i,j,c,s)
 end function samering
 
 subroutine neighborh(natoms,at,xyz,nb)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer  at(natoms),natoms,nb(20,natoms)
    real(wp) xyz(3,natoms)
@@ -231,7 +231,7 @@ subroutine neighborh(natoms,at,xyz,nb)
 end subroutine neighborh
 
 subroutine neighborhi(natoms,at,sqrab,i,nb)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer  at(natoms),natoms,nb(20)
    real(wp) sqrab(natoms*(natoms+1)/2)

@@ -17,7 +17,7 @@
 
 !> Generalized Born interaction kernels
 module xtb_solv_kernel
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : mctc_dot, mctc_gemv, mctc_symv
    use xtb_mctc_constants, only : fourpi, pi
    implicit none

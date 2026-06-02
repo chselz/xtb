@@ -17,7 +17,7 @@
 
 !> provides definition of calculation options type
 module xtb_type_options
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use iso_c_binding
    implicit none
 

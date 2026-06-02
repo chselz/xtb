@@ -37,7 +37,7 @@ end subroutine collect_coordinationnumber
 
 
 subroutine test_ncoord_pbc3d_latticepoints(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    use xtb_disp_coordinationnumber, only : getCoordinationNumber, cnType
    use xtb_type_environment, only : TEnvironment, init
@@ -154,7 +154,7 @@ end subroutine test_ncoord_pbc3d_latticepoints
 
 
 subroutine test_ncoord_pbc3d_neighbourlist(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    use xtb_disp_coordinationnumber, only : getCoordinationNumber, cnType
    use xtb_type_environment, only : TEnvironment, init

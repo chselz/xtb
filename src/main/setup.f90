@@ -17,7 +17,7 @@
 
 !> TODO
 module xtb_main_setup
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_solv_input, only: TSolvInput
    use xtb_solv_model, only: init
    use xtb_extern_orca, only: TOrcaCalculator, newOrcaCalculator

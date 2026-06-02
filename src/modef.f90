@@ -17,7 +17,7 @@
 
 module xtb_modef
    use xtb_mctc_io, only : stdout
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_single, only : singlepoint
    use xtb_anharmlib
    implicit none
@@ -32,7 +32,7 @@ contains
    ! mode_local =-1 : PES scan for anharmonic corrections (ie no minima opt.)
 
 subroutine modefollow(env, mol, chk, calc, egap, et, maxiter, epot, grd, sigma)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use iso_c_binding, only : c_null_char
 
    use xtb_mctc_convert, only : autokcal, aatoau, autorcm, amutoau

@@ -17,7 +17,7 @@
 
 !> Gathers the input data needed to create solvation models
 module xtb_solv_input
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    use xtb_solv_kernel, only : gbKernel
    use xtb_solv_state, only : solutionState

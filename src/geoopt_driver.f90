@@ -24,7 +24,7 @@ subroutine geometry_optimization &
       &   (env,mol,wfn,calc,egap,et,maxiter,maxcycle_in,etot,g,sigma, &
       &    tight,pr,initial_sp,fail, iter_needed)
 
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_type_molecule
    use xtb_type_restart

@@ -17,7 +17,7 @@
 
 !> TODO
 module xtb_disp_coordinationnumber
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi
    use xtb_param_covalentradd3, only : covalentRadD3
    use xtb_param_paulingen, only : paulingEN

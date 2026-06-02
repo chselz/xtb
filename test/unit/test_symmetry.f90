@@ -39,7 +39,7 @@ end subroutine collect_symmetry
 
 
 subroutine test_symmetry_water(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_thermo
 
@@ -70,7 +70,7 @@ subroutine test_symmetry_water(error)
 end subroutine test_symmetry_water
 
 subroutine test_symmetry_li8(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_thermo
 
@@ -106,7 +106,7 @@ subroutine test_symmetry_li8(error)
 end subroutine test_symmetry_li8
 
 subroutine test_symmetry_pcl3(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_thermo
 
@@ -138,7 +138,7 @@ subroutine test_symmetry_pcl3(error)
 end subroutine test_symmetry_pcl3
 
 subroutine test_symmetry_c20(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_thermo
 
@@ -232,7 +232,7 @@ subroutine test_symmetry_c20(error)
 end subroutine test_symmetry_c20
 
 subroutine rattle(nat,xyz,magnitude)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    integer, intent(in) :: nat
    real(wp), intent(out) :: xyz(3,nat)

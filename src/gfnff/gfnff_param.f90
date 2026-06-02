@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_gfnff_param
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    use xtb_gfnff_data, only : TGFFData, init
    use xtb_gfnff_generator, only : TGFFGenerator
    use xtb_gfnff_topology, only : TGFFTopology
@@ -413,7 +413,7 @@ module xtb_gfnff_param
    contains
 
    subroutine gfnff_set_param(n, gen, param)
-     use xtb_mctc_accuracy, only : wp 
+     use mctc_env, only : wp 
      use xtb_param_sqrtzr4r2, only : sqrtZr4r2
      implicit none
 !    Dummy                      ,
@@ -524,7 +524,7 @@ module xtb_gfnff_param
 
 
    subroutine gfnff_load_param(version, param, exist)
-     use xtb_mctc_accuracy, only : wp 
+     use mctc_env, only : wp 
      use xtb_param_covalentRadD3, only : covalentRadD3
      implicit none
      integer, intent(in) :: version
@@ -571,7 +571,7 @@ module xtb_gfnff_param
 
 
    subroutine gfnff_read_param(iunit, param)
-     use xtb_mctc_accuracy, only : wp 
+     use mctc_env, only : wp 
      use xtb_param_covalentRadD3, only : covalentRadD3
      implicit none
 !    Dummy
@@ -644,7 +644,7 @@ module xtb_gfnff_param
    end subroutine gfnff_write_param
 
    subroutine gfnff_param_alloc(topo, neigh, n)
-     use xtb_mctc_accuracy, only : wp 
+     use mctc_env, only : wp 
      use xtb_gfnff_neighbor
      implicit none
 !    Dummy
@@ -683,7 +683,7 @@ module xtb_gfnff_param
    end subroutine gfnff_param_alloc
 
    subroutine gfnff_param_dealloc(topo)
-     use xtb_mctc_accuracy, only : wp 
+     use mctc_env, only : wp 
      implicit none
      type(TGFFTopology), intent(inout) :: topo
 !    Dummy

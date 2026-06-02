@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_paramset
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_xtb_data
    use xtb_xtb_gfn0
    use xtb_xtb_gfn1
@@ -35,7 +35,7 @@ end subroutine set_gfn1_parameter
 
 
 subroutine set_gfn2_parameter(xpar,globpar,xtbData)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    use xtb_disp_dftd4
    implicit none
@@ -45,7 +45,7 @@ subroutine set_gfn2_parameter(xpar,globpar,xtbData)
 end subroutine set_gfn2_parameter
 
 subroutine set_gfn0_parameter(xpar,globpar,xtbData)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_param
    !use gfn0_module
    use xtb_aoparam

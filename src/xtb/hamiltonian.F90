@@ -17,7 +17,7 @@
 
 !> Implementation of the xTB core Hamiltonian
 module xtb_xtb_hamiltonian
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi
    use xtb_mctc_convert, only : evtoau
    use xtb_xtb_data, only : THamiltonianData

@@ -28,7 +28,7 @@ contains
 
 subroutine readParam &
       (env, iunit,globpar,xtbData,initialize)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    use xtb_readin, only : getline => strip_line
    use xtb_type_environment, only : TEnvironment

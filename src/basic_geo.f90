@@ -20,7 +20,7 @@ contains
 !  .....................................................................
 
       Subroutine dthetadr(nat,xyz,j,k,i,theta,kijk,dei,dej,dek)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
 
 !  .....................................................................
 !
@@ -90,7 +90,7 @@ contains
 
       Subroutine dphidr(nat,xyz,i,j,k,l,phi, &
                         dphidri,dphidrj,dphidrk,dphidrl)
-                     use xtb_mctc_accuracy, only : wp
+                     use mctc_env, only : wp
 !     the torsion derivatives
 
       implicit none
@@ -171,7 +171,7 @@ contains
                  (nat,xyz, &
                   i,j,k,l,omega, &
                   domegadri,domegadrj,domegadrk,domegadrl)
-               use xtb_mctc_accuracy, only : wp
+               use mctc_env, only : wp
 
 !     inversion derivatives
 !  .....................................................................
@@ -243,7 +243,7 @@ contains
 !  .....................................................................
 
       real(wp) Function valijkl(nat,xyz,i,j,k,l)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       use xtb_mctc_constants, only: pi
 
 !  .....................................................................
@@ -327,7 +327,7 @@ contains
 !  .....................................................................
 
       real(wp) Function valijk(nat,xyz,j,k,i)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
 
 !  .....................................................................
 
@@ -364,7 +364,7 @@ contains
 !  .....................................................................
 
       real(wp) Function omega (nat,xyz,i,j,k,l)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
 
 !   Calculates the inversion angle
 !  .....................................................................
@@ -396,7 +396,7 @@ contains
 !  .....................................................................
 
       Subroutine crossprod(ra,rb,rab)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
 
       implicit none
 
@@ -411,7 +411,7 @@ contains
 !  .....................................................................
 
       real(wp) Function  vecnorm (r,n,inorm)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
 
       implicit none
 
@@ -439,7 +439,7 @@ contains
 !  .....................................................................
 
       subroutine crprod(a,b,c)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       implicit double precision (a-h,o-z)
       dimension a(3),b(3),c(3)
 
@@ -453,7 +453,7 @@ contains
 !  .....................................................................
 
       subroutine vsc1(a,scale,tol)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       implicit integer (i-n)
       implicit double precision (a-h,o-z)
       dimension a(3)
@@ -472,7 +472,7 @@ contains
 !  .....................................................................
 
       pure subroutine impsc(a,b,c)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       implicit none
       real(wp),intent(in)  :: a(3),b(3)
       real(wp),intent(out) :: c
@@ -500,7 +500,7 @@ contains
 !  .....................................................................
 
       pure subroutine bangl(xyz,i,j,k,angle)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       implicit none
       real(wp),intent(in)  :: xyz(3,*)
       real(wp),intent(out) :: angle

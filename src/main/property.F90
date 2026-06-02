@@ -20,7 +20,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_propertyoutput
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_io, only: stdout
    use xtb_mctc_symbols, only: toSymbol
    use xtb_mctc_convert, only: evtoau, autod, autoaa
@@ -1584,7 +1584,7 @@ module xtb_propertyoutput
 end module xtb_propertyoutput
 
 subroutine print_orbital_eigenvalues(iunit, wfn, range)
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_convert
    use xtb_type_wavefunction
    implicit none

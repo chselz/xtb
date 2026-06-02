@@ -33,7 +33,7 @@
 !  is not required to care about it existence
 module xtb_type_molecule
    use mctc_io_structure, only : structure_type, new_structure
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_boundaryconditions, only : boundaryCondition
    use xtb_mctc_symbols, only : toNumber, toSymbol, getIdentity
    use xtb_type_wsc
@@ -503,7 +503,7 @@ subroutine deallocate_molecule(self)
 end subroutine deallocate_molecule
 
 subroutine update(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_pbc_tools
 
    implicit none
@@ -526,7 +526,7 @@ end subroutine update
 !> calculates all distances for molecular structures and minimum
 !> image distances for periodic structures
 subroutine mol_calculate_distances(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_pbc_tools
    
    implicit none
@@ -558,7 +558,7 @@ end subroutine mol_calculate_distances
 
 !> get all nuclear charges
 subroutine mol_set_nuclear_charge(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    class(TMolecule),intent(inout) :: self  !< molecular structure information
    integer :: i
@@ -598,7 +598,7 @@ end subroutine mol_set_nuclear_charge
 
 !> get all nuclear charges
 subroutine mol_set_atomic_masses(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_param
    implicit none
    class(TMolecule),intent(inout) :: self  !< molecular structure information
@@ -610,7 +610,7 @@ end subroutine mol_set_atomic_masses
 !  This automatically done when calling @see xyz_to_abc, so we only have
 !  to perform the transformation there and back again
 subroutine wrap_back(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_pbc_tools
    implicit none
    class(TMolecule),intent(inout) :: self !< molecular structure information
@@ -619,7 +619,7 @@ subroutine wrap_back(self)
 end subroutine wrap_back
 
 pure function center_of_geometry(self) result(center)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    class(TMolecule),intent(in) :: self !< molecular structure information
    real(wp) :: center(3)
@@ -634,7 +634,7 @@ pure function center_of_geometry(self) result(center)
 end function center_of_geometry
 
 pure subroutine shift_to_center_of_geometry(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    class(TMolecule),intent(inout) :: self !< molecular structure information
    real(wp) :: center(3)
@@ -646,7 +646,7 @@ pure subroutine shift_to_center_of_geometry(self)
 end subroutine shift_to_center_of_geometry
 
 pure function molecular_mass(self) result(molmass)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    class(TMolecule),intent(in) :: self !< molecular structure information
    real(wp) :: molmass
@@ -654,7 +654,7 @@ pure function molecular_mass(self) result(molmass)
 end function molecular_mass
 
 pure function center_of_mass(self) result(center)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    class(TMolecule),intent(in) :: self !< molecular structure information
    real(wp) :: center(3)
@@ -668,7 +668,7 @@ pure function center_of_mass(self) result(center)
 end function center_of_mass
 
 pure subroutine shift_to_center_of_mass(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    class(TMolecule),intent(inout) :: self !< molecular structure information
    real(wp) :: center(3)
@@ -680,7 +680,7 @@ pure subroutine shift_to_center_of_mass(self)
 end subroutine shift_to_center_of_mass
 
 pure function moments_of_inertia(self) result(moments)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_math, only : eigval3x3
    implicit none
    class(TMolecule),intent(in) :: self !< molecular structure information
@@ -715,7 +715,7 @@ pure function moments_of_inertia(self) result(moments)
 end function moments_of_inertia
 
 pure function rotational_constants(self)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_la
    implicit none
    class(TMolecule),intent(in) :: self !< molecular structure information
@@ -728,7 +728,7 @@ pure function rotational_constants(self)
 end function rotational_constants
 
 pure subroutine align_to_principal_axes(self,break_symmetry)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_math, only : eigvec3x3, matdet3x3
    use xtb_pbc_tools
    implicit none

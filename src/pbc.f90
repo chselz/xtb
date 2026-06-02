@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_pbc
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 !! ========================================================================
 !  Helper functions for periodic boundary conditions, mostly from dftd3

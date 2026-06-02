@@ -17,7 +17,7 @@
 
 !> TODO
 module xtb_xtb_multipole
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_xtb_data, only : TMultipoleData
    implicit none
    private

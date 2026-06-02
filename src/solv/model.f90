@@ -18,7 +18,7 @@
 
 !> Generic solvation model used to create actual solvation calculators
 module xtb_solv_model
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : fourpi
    use xtb_mctc_convert, only : aatoau, autoaa, kcaltoau, autokcal
    use xtb_mctc_strings, only : lowercase

@@ -19,7 +19,7 @@
 !> Im, W.; Lee, M. S.; Brooks, C. L., III Generalized Born model with a simple smoothing function. J. Comput. Chem. 2003, 24, 1691-1702
 !> DOI: 10.1002/jcc.10321
 module xtb_solv_sasa
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : aatoau
    implicit none
    private

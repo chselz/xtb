@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_docking_param
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_symbols, only: toSymbol
    use xtb_type_setvar
    use xtb_type_molecule, only: TMolecule, init

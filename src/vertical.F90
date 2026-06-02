@@ -23,7 +23,7 @@
 !-----------------------------------------------------------------------
 module xtb_vertical
 
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_calculator, only: TCalculator
    use xtb_type_data, only: scc_results
    use xtb_type_environment, only: TEnvironment

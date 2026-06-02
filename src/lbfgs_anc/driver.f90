@@ -15,7 +15,7 @@
 ! along with ancopt.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_pbc_optimizer_driver
-   use xtb_mctc_accuracy, only : wp!, error_type, fatal_error
+   use mctc_env, only : wp!, error_type, fatal_error
    use xtb_type_molecule, only : TMolecule
    use xtb_type_calculator
    use xtb_gfnff_calculator, only : TGFFCalculator

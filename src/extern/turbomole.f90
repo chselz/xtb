@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_extern_turbomole
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_mctc_filetypes, only : fileType
    use xtb_mctc_symbols, only : toSymbol
@@ -179,7 +179,7 @@ end subroutine singlepoint
 !---------------------------------------------------------
 subroutine external_turbomole(env,n,at,xyz,nel,nopen,extcode,extmode,grd,eel,g,dip,lsolv,chrg,uhf)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_setparam
    
    implicit none
@@ -372,7 +372,7 @@ end subroutine external_turbomole
 !-------------------------------------------------------
 subroutine writeControl(chrg,uhf)
 
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_symbols, only : toSymbol
    implicit none
    real(wp), intent(in) :: chrg
@@ -404,7 +404,7 @@ subroutine writeControl(chrg,uhf)
 end subroutine writeControl
 
 subroutine wrtm(n,at,xyz)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_symbols, only : toSymbol
    implicit none
    integer n, at(n), iunit, i
@@ -429,7 +429,7 @@ end subroutine wrtm
 !----------------------------------------
 !subroutine readTM(n,ifgrd,energy,gradient,xyz)
    
- !  use xtb_mctc_accuracy, only : wp
+ !  use mctc_env, only : wp
    !use xtb_filetools, only : open_file, close_file, remove_file
  !  use xtb_readin , only : strip_line,getValue
 
@@ -461,7 +461,7 @@ end subroutine wrtm
 !end subroutine readTM
 subroutine rdtm(env,n,grd,e,g,xyz)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    type(TEnvironment), intent(inout) :: env
    integer n, iunit, i, nl, j, nn

@@ -17,7 +17,7 @@
 
 !> Implementation of Hessian projections
 module xtb_freq_project
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : mctc_syrk, mctc_nrm2, mctc_symm
    use xtb_mctc_math, only : eigvec3x3, crossProd
    use xtb_type_molecule, only : TMolecule

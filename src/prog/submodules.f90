@@ -17,7 +17,7 @@
 
 !> Available submodule in this program
 module xtb_prog_submodules
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
 

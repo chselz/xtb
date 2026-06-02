@@ -40,7 +40,7 @@
 !  end interface
 !! ========================================================================
 module xtb_disp_ncoord
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
 
    real(wp),private,parameter :: cnthr = 1600.0_wp

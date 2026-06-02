@@ -17,7 +17,7 @@
 
 !> Intermolecular force field calculator
 module xtb_iff_calculator
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_calculator, only: TCalculator
    use xtb_type_environment, only: TEnvironment
    use xtb_type_molecule, only: TMolecule, init

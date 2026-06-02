@@ -17,7 +17,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_disp_dftd4
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_constants, only : pi
    use xtb_mctc_param, only: gam => chemical_hardness
    use xtb_mctc_blas, only : mctc_gemv
@@ -586,7 +586,7 @@ end function fdmprdr_zerom
 
 
 subroutine d4(dispm,nat,ndim,at,wf,g_a,g_c,covcn,gw,c6abns)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    type(TDispersionModel), intent(in) :: dispm
    integer, intent(in)  :: nat
    integer, intent(in)  :: ndim

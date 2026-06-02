@@ -15,7 +15,7 @@
 ! along with ancopt.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_pbc_optimizer_lbfgs
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_environment, only : TEnvironment
    use xtb_mctc_blas, only : mctc_dot
 

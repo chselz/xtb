@@ -17,7 +17,7 @@
 
 module test_hessian
    use testdrive, only : new_unittest, unittest_type, error_type, check, test_failed
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
    use xtb_type_options
    use xtb_type_molecule

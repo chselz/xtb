@@ -32,7 +32,7 @@ c     enddo
 c     end
 
       SUBROUTINE RSP(A,N,MATZ,W,Z)
-         use xtb_mctc_accuracy, only : wp
+         use mctc_env, only : wp
       IMPLICIT INTEGER (I-N)
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION A(n*(n+1)/2),  W(n), Z(n,n)  

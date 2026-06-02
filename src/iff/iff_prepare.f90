@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_iff_iffprepare
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_environment, only: TEnvironment
    use xtb_splitparam
    use xtb_iff_calculator, only: TIFFCalculator

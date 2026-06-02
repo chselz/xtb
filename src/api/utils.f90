@@ -18,7 +18,7 @@
 !> Utilities to work with data types from C
 module xtb_api_utils
    use, intrinsic :: iso_c_binding
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule, only : TMolecule
    use xtb_type_environment, only : init
    implicit none

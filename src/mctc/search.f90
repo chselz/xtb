@@ -17,7 +17,7 @@
 
 !> Implements search algorithms
 module xtb_mctc_search
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private
 

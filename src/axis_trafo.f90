@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_axis
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 contains
   subroutine axis(numat,nat,xyz,aa,bb,cc)
     use xtb_splitparam

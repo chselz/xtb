@@ -8,7 +8,7 @@ module xtb_tblite_mapping
    use xtb_type_restart, only: TRestart
    use xtb_type_data, only: scc_results
    use xtb_type_molecule, only: TMolecule
-   use xtb_mctc_accuracy, only: wp   
+   use mctc_env, only: wp   
    use mctc_io_convert, only: autoev
    use xtb_type_wavefunction, only: TWavefunction
 

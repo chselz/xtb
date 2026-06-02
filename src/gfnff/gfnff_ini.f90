@@ -19,7 +19,7 @@ module xtb_gfnff_ini
 contains
 
 subroutine gfnff_ini(env,pr,makeneighbor,mol,gen,param,topo,neigh,efield,accuracy)
-      use xtb_mctc_accuracy, only : wp, sp
+      use mctc_env, only : wp, sp
       use xtb_type_molecule
       use xtb_type_environment, only : TEnvironment
       use xtb_gfnff_param, only : gfnff_thresholds
@@ -2382,7 +2382,7 @@ end subroutine specialTorsList
 
 !> @brief charge scaling function
 pure elemental function zeta(at,q)
-use xtb_mctc_accuracy, only : wp
+use mctc_env, only : wp
    implicit none
    integer ,intent(in) :: at
    real(wp),intent(in) :: q

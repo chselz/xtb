@@ -38,7 +38,7 @@ end subroutine collect_peeq
 
 
 subroutine test_peeq_sp(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_mctc_systools
@@ -195,7 +195,7 @@ subroutine test_peeq_sp(error)
 end subroutine test_peeq_sp
 
 subroutine test_peeq_api(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_type_options
@@ -276,7 +276,7 @@ subroutine test_peeq_api(error)
 end subroutine test_peeq_api
 
 subroutine test_peeq_api_srb(error)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_io, only : stdout
 
    use xtb_mctc_convert

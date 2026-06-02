@@ -22,7 +22,7 @@ module xtb_gfnff_fraghess
 
    interface
      function shortest_distance(nspin, start, goal, numnb, neighbours, input_distances, visited, precessor)
-        use xtb_mctc_accuracy, only : wp
+        use mctc_env, only : wp
         implicit none
         real(wp)             :: shortest_distance
         integer, intent(in)  :: nspin
@@ -35,7 +35,7 @@ module xtb_gfnff_fraghess
         integer, intent(out) :: precessor(nspin)
       end function shortest_distance
       subroutine eigsort4(lab,u,ew)
-         use xtb_mctc_accuracy, only : sp
+         use mctc_env, only : sp
          implicit none
          integer,  intent(in)    :: lab
          real(sp), intent(inout) :: u(lab,lab)
@@ -46,7 +46,7 @@ module xtb_gfnff_fraghess
    contains
 
      subroutine fragmentize(nspin, at, xyz, maxsystem, maxmagnat, jab, numnb, numctr, neigh, ispinsyst, nspinsyst, nsystem, env)
-        use xtb_mctc_accuracy, only : wp, sp
+        use mctc_env, only : wp, sp
         use xtb_type_environment, only: TEnvironment
         implicit none
 
@@ -320,7 +320,7 @@ module xtb_gfnff_fraghess
      ! hess     - diagonalized hessian (eigenvectors), overwritten
      ! eig_calc - diagonalized hessian (eigenvalues)
      !---------------------------------------------------------------------------------------------
-     use xtb_mctc_accuracy, only : wp, sp
+     use mctc_env, only : wp, sp
         implicit none
         !Dummy Arguments
         integer,  intent(in)     :: nat                          ! # of atoms
@@ -418,7 +418,7 @@ end module xtb_gfnff_fraghess
 !https://de.wikipedia.org/wiki/Dijkstra-Algorithmus
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function shortest_distance(nspin, start, goal, numnb, neighbours, input_distances, visited, precessor)
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    implicit none
    !Dummy Arguments:
    real(wp)             :: shortest_distance
@@ -486,7 +486,7 @@ end function shortest_distance
 
 
 subroutine eigsort4(lab,u,ew)
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    implicit none
    integer  :: ii,k, j, i
    real(sp) :: pp, hilf
@@ -517,7 +517,7 @@ subroutine eigsort4(lab,u,ew)
 end subroutine eigsort4
 
 pure subroutine com(n,at,xyz,sum3)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    !Dummy
    integer, intent(in)   :: n

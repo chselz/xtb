@@ -18,7 +18,7 @@
 !> API for dealing with molecular structure data
 module xtb_api_molecule
    use, intrinsic :: iso_c_binding
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_api_environment
    use xtb_api_utils
    use xtb_type_molecule

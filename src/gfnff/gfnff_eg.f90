@@ -33,7 +33,7 @@ module xtb_gfnff_eg
    use xtb_type_neighbourlist, only : TNeighbourList
    use xtb_type_latticepoint, only : TLatticePoint, init_l
    use xtb_gfnff_neighbor
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_type_molecule, only : TMolecule
    implicit none
    private
@@ -131,7 +131,7 @@ contains
 subroutine gfnff_eg(env,mol,pr,n,ichrg,at,xyz,sigma,g,etot,res_gff, &
       & param,topo,neigh,nlist,efield,solvation,update,version,accuracy,minpr)
 
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_gfnff_param, only : gffVersion, gfnff_thresholds
    use xtb_type_data
    use xtb_type_timer
@@ -1160,7 +1160,7 @@ subroutine egbond_hb(i,iat,jat,iTr,rab,rij,drij,drijdcn,hb_cn,hb_dcn,n,at,xyz,e,
 
 subroutine dncoord_erf(nat,at,xyz,rcov,cn,dcn,thr,topo,neigh,dcndL)
     
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    implicit none
    
@@ -1757,7 +1757,7 @@ end subroutine gfnffdampt_nci
 
 subroutine goed_gfnff(env,single,n,at,sqrab,r,chrg,eeqtmp,cn,q,es,gbsa,param,topo)
    
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    use xtb_mctc_la
    implicit none
    
@@ -1916,7 +1916,7 @@ end subroutine goed_gfnff
 
 subroutine goed_pbc_gfnff(env,mol,single,n,at,r,chrg,eeqtmp,cn,q,es,&
                       & gbsa,param,topo, gTrans, rTrans, x, cf)
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    use xtb_mctc_la
    use xtb_mctc_blas, only: mctc_symv
    implicit none
@@ -3447,7 +3447,7 @@ end subroutine rbxgfnff_eg
 
 !> torsion term for rotation around triple bonded carbon
 subroutine sTors_eg(m, n, xyz, topo, energy, dg)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    integer, intent(in) :: m
    integer, intent(in) :: n
@@ -3495,7 +3495,7 @@ end subroutine sTors_eg
 !> CN routines
 !> logCN derivative saved in dlogCN array
 subroutine gfnff_dlogcoord(n,at,xyz,rab,logCN,dlogCN,thr2,param)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    
    type(TGFFData), intent(in) :: param
@@ -3593,7 +3593,7 @@ contains
 
 pure elemental function create_logCN(cn,param) result(count)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 
    type(TGFFData), intent(in) :: param
    real(wp), intent(in) :: cn
@@ -3605,7 +3605,7 @@ end function create_logCN
 
 pure elemental function create_dlogCN(cn,param) result(count)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    type(TGFFData), intent(in) :: param
    real(wp), intent(in) :: cn
@@ -3617,7 +3617,7 @@ end function create_dlogCN
 
 pure elemental function create_erfCN(k,r,r0) result(count)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    real(wp), intent(in) :: k
    real(wp), intent(in) :: r
@@ -3632,7 +3632,7 @@ end function create_erfCN
 
 pure elemental function create_derfCN(k,r,r0) result(count)
    
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    
    real(wp), intent(in) :: k
    real(wp), intent(in) :: r

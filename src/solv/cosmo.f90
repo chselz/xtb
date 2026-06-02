@@ -17,7 +17,7 @@
 
 !> COSMO implementation based on ddCOSMO backend
 module xtb_solv_cosmo
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_blas, only : mctc_dot, mctc_gemv
    use xtb_mctc_constants, only : fourpi, pi
    use xtb_mctc_convert, only : aatoau, autoaa

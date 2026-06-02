@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_docking_search_nci
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_type_environment, only: TEnvironment
    use xtb_docking_param
    use xtb_iff_iffenergy, only: iff_e, intermole_probe, alignmol

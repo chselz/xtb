@@ -20,7 +20,7 @@
 ! ndim is the dimension of the problem for nel electrons with nopen more alpha than beta
 
 subroutine gfnffqmsolve(pr,A,S,ovlp,et,ndim,nopen,nel,eel,focc,e)
-      use xtb_mctc_accuracy, only : wp
+      use mctc_env, only : wp
       use xtb_scc_core, only : dmat, fermismear, occu
       implicit none
       integer ndim      ! # basis

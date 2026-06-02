@@ -19,7 +19,7 @@
 !  reimplementation of the CM5 charges
 !! ------------------------------------------------------------------------
 module xtb_solv_cm5
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
 contains
 subroutine calc_cm5(nat,at,xyz,cm5,dcm5dr)
 use xtb_mctc_convert

@@ -22,7 +22,7 @@ subroutine mrec(molcount,xyz,cn,bond,nat,at,molvec)
    ! at: atomic number array
    ! molvec: assignment vector of atom to fragment
 
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp),intent(in)    :: xyz(3,nat),cn(nat)
    integer, intent(in)    :: nat,at(nat)
@@ -47,7 +47,7 @@ end subroutine mrec
 
 recursive subroutine neighbours(i,xyz,cn,iat,taken,nat,bond,&
       &                                molvec,molcnt)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    real(wp) xyz(3,nat),cn(nat)
    real(wp)  bond(nat,nat)
@@ -70,7 +70,7 @@ end subroutine neighbours
 !CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
 subroutine cutcov(n,at,xyz,cn,wb,bond)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    integer i,n,j,at(n),k,nb(20,n),iring,c(8,n),s(n)
    real(wp) bond(n,n)

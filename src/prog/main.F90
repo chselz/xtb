@@ -17,7 +17,7 @@
 
 
 module xtb_prog_main
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_mctc_io, only: stderr
    use xtb_mctc_timings
    use xtb_mctc_systools

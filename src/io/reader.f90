@@ -22,7 +22,7 @@ module xtb_io_reader
    use xtb_io_reader_genformat, only : readHessianDFTBPlus
    use xtb_io_reader_orca, only : readHessianOrca
    use xtb_io_reader_turbomole, only : readHessianTurbomole
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_filetypes, only : fileType, hessType
    use xtb_type_environment, only : TEnvironment
    use xtb_type_molecule, only : TMolecule, assignment(=)

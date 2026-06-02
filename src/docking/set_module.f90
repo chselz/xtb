@@ -20,7 +20,7 @@
 !  THE DOCKING ALGORITHM *
 !! ------------------------------------------------------------------------
 module xtb_docking_set_module
-   use xtb_mctc_accuracy, only: wp
+   use mctc_env, only: wp
    use xtb_readin, only: mirror_line, getValue
    use xtb_docking_param
    use xtb_type_environment, only: TEnvironment

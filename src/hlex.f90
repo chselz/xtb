@@ -18,7 +18,7 @@ module xtb_hlex
 contains
 
 subroutine hlex(nat,at,nbf,nao,ihomo,xyz,focc,s,cmo,eiga,basis)
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_mctc_convert, only : autoev,evtoau
    use xtb_type_basisset
    use xtb_dtrafo

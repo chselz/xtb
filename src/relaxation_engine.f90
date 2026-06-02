@@ -19,7 +19,7 @@
 !  comes with its own parameter class (most are general parameters like thresholds)
 module xtb_relaxation_engine
    use xtb_io_writer, only : writeMolecule
-   use xtb_mctc_accuracy, only : wp, sp
+   use mctc_env, only : wp, sp
    use xtb_mctc_convert, only : fstoau, amutoau
    use xtb_mctc_fileTypes, only : fileType
    use xtb_type_environment, only : TEnvironment

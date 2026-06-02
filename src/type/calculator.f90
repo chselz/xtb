@@ -17,7 +17,7 @@
 
 !> abstract calculator that hides implementation details from calling codes
 module xtb_type_calculator
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_solv_model, only : TSolvModel
    use xtb_type_data, only : scc_results
    use xtb_type_environment, only : TEnvironment

@@ -16,7 +16,7 @@
 ! along with xtb.  If not, see <https://www.gnu.org/licenses/>.
 
 module xtb_sphereparam
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    implicit none
    private :: wp
    public

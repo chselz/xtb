@@ -30,7 +30,7 @@ subroutine lopt(init, n, no, accr, op, d)
    !     stationarity condition
    !     sum(k) op(ij,k)*(op(ii,k)-op(jj,k)) = 0 all i.ne.j
    !
-   use xtb_mctc_accuracy, only : wp
+   use mctc_env, only : wp
    use xtb_setparam
 
    implicit integer(i-n)
