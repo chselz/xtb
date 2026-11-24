@@ -386,9 +386,14 @@ $oniom
 $opt
 ~~~~
 *engine*='method'::
-    method can be 'rf' for ANCopt (default for nonperiodic systems),
-    'lbfgs' for L-ANCopt, 'pbc_lbfgs' for periodic L-BFGS (default for
-    periodic systems), or 'inertial' for FIRE.
+    method can be 'rf' for ANCopt, 'lbfgs' for L-ANCopt, 'int' for
+    intopt (quasi-Newton in redundant internal coordinates),
+    'pbc_lbfgs' for periodic L-BFGS (default for periodic systems), or
+    'inertial' for FIRE. Without this key, `--opt` chooses automatically
+    for nonperiodic systems: intopt for main-group systems (H, B-F, Si-Cl,
+    Ge-Br, Se, Sn-I) with at most six covalent neighbours per atom, at most
+    250 atoms (GFN-FF: 50) and no fixed atoms, otherwise ANCopt (L-ANCopt
+    above 500 atoms). `--nopt` skips the automatic choice.
 
 *output*='file'::
     redirect output of optimization to 'file'
@@ -402,16 +407,23 @@ $opt
     tight = 1,      verytight = 2,    extreme = 3
 
 *microcycle*='int'::
-    number of optimization cycles before new ANC are made (default=25)
+    number of optimization cycles before new ANC are made, increased by 10%
+    after each regeneration (default: 10 for `ancopt(3)`, 20 for the L-ANCopt
+    engine, where it is also the LBFGS memory)
 
 *maxcycle*='int'::
     total number of opt. cycles, 0 means automatically determined
 
 *hlow*='real'::
-    lowest force constant in ANC generation (should be > 0.005)
+    lowest force constant in ANC generation in Eh/bohr^2 (default: 0.0005
+    for `ancopt(3)`, 0.01 for the L-ANCopt engine); in `ancopt(3)` the diagonal
+    of the BFGS-updated Hessian is bounded below by hlow/50.
+    Larger values (e.g. 0.01, the `ancopt(3)` default before version 6.8) give
+    more conservative but often much slower steps along soft modes
 
 *maxdispl*='real'::
-    maximum coordinate displacement in `ancopt(3)`
+    maximum coordinate displacement in `ancopt(3)`; in addition, the step is
+    restricted by a trust radius that is adapted during the optimization
 
 *average conv*='bool'::
     average the energy and gradient before checking for convergence to accelerate

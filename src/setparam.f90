@@ -78,6 +78,7 @@ module xtb_setparam
    integer, parameter :: p_engine_lbfgs     = 2
    integer, parameter :: p_engine_inertial  = 3
    integer, parameter :: p_engine_pbc_lbfgs = 4
+   integer, parameter :: p_engine_int       = 5
 
    integer, parameter :: p_modh_read     = -2
    integer, parameter :: p_modh_unit     = -1
@@ -257,14 +258,18 @@ module xtb_setparam
    character(len=:), allocatable :: opt_outfile
    character(len=:), allocatable :: opt_logfile
    integer, allocatable :: opt_engine
+   !> automatic choice between ANCopt and intopt if no engine is given
+   logical :: opt_auto = .true.
+   !> engine and reason of the automatic choice (for the output)
+   character(len=:), allocatable :: opt_auto_reason
 
    !> ANCopt settings
    type(ancopt_setvar) :: optset = ancopt_setvar (&
       optlev = p_olev_normal, &
-      micro_opt = 20, &  ! increased during opt.
+      micro_opt = 0, &   ! 0: default of the optimization engine
       maxoptcycle = 0, & ! det. in ancopt routine if not read in
       maxdispl_opt = 1.000_wp, &
-      hlow_opt = 0.010_wp, & ! 0.002 is too small
+      hlow_opt = 0.0_wp, & ! 0: default of the optimization engine
       average_conv = .false.)
    
    type(modhess_setvar) :: mhset = modhess_setvar (&

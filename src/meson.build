@@ -115,6 +115,7 @@ srcs += files(
   'onetri.f90',
   'oniom.F90',
   'optimizer.f90',
+  'optimizer_internal.f90',
   'pbc.f90',
   'pbc_tools.f90',
   'peeq_module.f90',

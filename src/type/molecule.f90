@@ -43,7 +43,7 @@ module xtb_type_molecule
    use xtb_type_vendordata
    implicit none
 
-   public :: TMolecule, new_molecule_api, init, assignment(=)
+   public :: TMolecule, new_molecule_api, init, assignment(=), assign_molecule
    public :: len, size
 
    private
@@ -196,6 +196,26 @@ contains
 
 
 !> Copy molecule type
+!> Full copy of a molecule, equivalent to the intrinsic assignment dst = src.
+!>
+!> gfortran before version 12 copies the deferred-length character array
+!> component sym incorrectly in an intrinsic derived-type assignment: only the
+!> first element is copied, the rest of the new array is uninitialised memory
+!> (observed with gfortran 11.4 for a 690-atom system in L-ANCopt, giving
+!> garbage element symbols in the output). The symbols are therefore copied
+!> again explicitly.
+subroutine assign_molecule(dst, src)
+   type(TMolecule), intent(inout) :: dst
+   type(TMolecule), intent(in) :: src
+
+   dst = src
+   if (allocated(dst%sym)) deallocate(dst%sym)
+   if (allocated(src%sym)) then
+      allocate(character(len=len(src%sym)) :: dst%sym(size(src%sym)))
+      dst%sym(:) = src%sym(:)
+   end if
+end subroutine assign_molecule
+
 subroutine copyMolecule(self,mol0)
 
    class(TMolecule), intent(out) :: self

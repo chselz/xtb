@@ -123,6 +123,7 @@ list(APPEND srcs
   "${dir}/onetri.f90"
   "${dir}/oniom.F90"
   "${dir}/optimizer.f90"
+  "${dir}/optimizer_internal.f90"
   "${dir}/pbc.f90"
   "${dir}/pbc_tools.f90"
   "${dir}/peeq_module.f90"

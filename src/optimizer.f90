@@ -42,6 +42,40 @@ module xtb_optimizer
       module procedure new_convergence_log
    end interface convergence_log
 
+   !> Trust radius of the RF step in ANC space (bohr): initial, lower and upper bound
+   real(wp), parameter :: trust_init = 0.5_wp
+   real(wp), parameter :: trust_min = 0.01_wp
+   real(wp), parameter :: trust_max = 1.0_wp
+   !> Energy rise (Eh) above which a step is rejected. A step is only rejected
+   !> if it also overshot, i.e. the new gradient points along the step; an
+   !> energy rise with the slope still downhill comes from a discontinuity of
+   !> the potential energy surface (e.g. GFN-FF list updates), not from the step.
+   real(wp), parameter :: step_reject_thr = 1.0e-6_wp
+   !> Largest number of consecutive rejected steps. Afterwards, and whenever
+   !> the rejected step was already at the lower trust bound, the step is
+   !> accepted, so that discontinuities of the potential energy surface
+   !> (e.g. list updates in force fields) cannot trap the optimizer
+   integer, parameter :: max_reject = 3
+   !> Lower bound of the diagonal of the BFGS-updated Hessian relative to hlow.
+   !> A fixed bound of 0.01 Eh/bohr^2 prevented learning the curvature of
+   !> large-amplitude modes (torsions of whole fragments), which in Cartesian
+   !> units is often 1e-4 Eh/bohr^2 or lower.
+   real(wp), parameter :: bfgs_floor_scale = 0.02_wp
+
+   !> Default lowest force constant (Eh/bohr^2) of the ANC Hessian. Soft modes
+   !> of flexible molecules need values well below the 0.01 used before 6.8;
+   !> this is stable together with the trust radius
+   real(wp), parameter :: hlow_default = 0.0005_wp
+   !> Default number of cycles before the ANCs are regenerated from the
+   !> model Hessian (increased by 10 % after each regeneration)
+   integer, parameter :: micro_default = 10
+
+   !> Largest displacement (bohr) of a single atom per step. Only useful
+   !> together with the trust radius reset at every ANC regeneration: the
+   !> model Hessian can be far too soft for bonds of heavy elements, and the
+   !> first steps in a new ANC set would otherwise overshoot along them
+   real(wp), parameter :: max_atom_displ = 0.2_wp
+
 contains
 
 !> construct optimizer settings from optimization level
@@ -227,7 +261,7 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
    integer :: maxopt
 
    !> max number of opt cycles before generation of new ANC
-   integer :: maxmicro
+   integer :: maxmicro, micro0
    
    !> algorithm for updating Hessian  
    integer :: iupdat ! 0 = BFGS, 1 = Powell
@@ -280,6 +314,11 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
    
    real(wp) :: U(3,3), x_center(3), y_center(3), rmsdval
    real(wp) :: esave
+   !> trust radius, kept across ANC regenerations
+   real(wp) :: trad
+   !> initial Hessian of the current ANC set and stiffening learned in the
+   !> previous ANC sets as Cartesian low-rank factor (cstiff cstiff^T)
+   real(wp),allocatable :: hinit(:), cstiff(:,:)
    logical :: restart,ex,converged
    
    !> if linear molecule
@@ -326,9 +365,12 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
    hmax  = 5.0_wp
    nat3 = 3 * mol%n
    maxdispl = set%optset%maxdispl_opt  ! def: 1.0
-   hlow = set%optset%hlow_opt          ! def: 0.01 
+   hlow = set%optset%hlow_opt
+   if (hlow <= 0.0_wp) hlow = hlow_default
    s6   = set%mhset%s6                 ! def: 20.0
-   maxmicro=set%optset%micro_opt       ! def: 20 
+   micro0 = set%optset%micro_opt
+   if (micro0 <= 0) micro0 = micro_default
+   maxmicro = micro0
    estart = etot
    call get_optthr(mol%n,tight,ethr,gthr,maxopt,acc)
    if (set%acc_set) acc = set%acc
@@ -423,6 +465,10 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
       write(env%unit,scifmt) "energy convergence", ethr,    "Eh  "
       write(env%unit,scifmt) "grad. convergence ", gthr,    "Eh/α"
       write(env%unit,dblfmt) "maximum RF displ. ", maxdispl,"    "
+      if (iupdat == 0) then
+         write(env%unit,dblfmt) "initial trust rad.", trust_init,"    "
+         write(env%unit,dblfmt) "max. atom displ.  ", max_atom_displ,"    "
+      end if
       write(env%unit,scifmt) "Hlow (freq-cutoff)", hlow,    "    "
       write(env%unit,dblfmt) "Hmax (freq-cutoff)", hmax,    "    "
       write(env%unit,dblfmt) "S6 in model hess. ", s6,      "    "
@@ -456,6 +502,9 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
    endif
 
    call anc%allocate(mol%n,nvar,hlow,hmax) ! allocate ANC
+   trad = trust_init
+   allocate(hinit(nvar*(nvar+1)/2), source=0.0_wp)
+   allocate(cstiff(nat3,0))
    call molopt%copy(mol) ! copy molecular information
    if (profile) call timer%measure(1) ! start opt timer
 
@@ -481,6 +530,10 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
          call env%error("Calculation of model hessian failed", source)
          return
       end if
+      ! add the curvature the previous ANC sets have learned to be stiffer
+      do i = 1, size(cstiff,2)
+         call dspr('u',nat3,1.0_wp,cstiff(:,i),1,fc)
+      end do
 
       thr=1.d-11
    
@@ -542,13 +595,14 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
    ! diagonalize Hessian and sort eigenvalues !
    ! with fixed atoms the null space is already projected exactly !
    call anc%new(env%unit,molopt%xyz,h,pr,linear,rigid=fixset%n == 0)
+   hinit = anc%hess
    if (profile) call timer%measure(3) ! stop timer for ANC generation
    esave = etot ! save energy 
 
 !----------------------------------------------------------------!
 !---------------------- Optimization ----------------------------!
 !----------------------------------------------------------------!
-   call relax(env,iter,molopt,anc,restart,maxmicro,maxdispl,ethr,gthr, &
+   call relax(env,iter,molopt,anc,restart,maxmicro,maxdispl,trad,ethr,gthr, &
       & iii,chk,calc,egap,acc,et,maxiter,iupdat,etot,g,sigma,ilog,pr,fail, &
       & converged,timer,set%optset%exact_rf,avconv)
    calc%accuracy = acc
@@ -561,13 +615,19 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
    endif
 
    ! dynamically adjust number of micro iterations !
-   maxmicro=min(int(maxmicro*1.1),2*set%optset%micro_opt)
+   maxmicro=min(int(maxmicro*1.1),2*micro0)
 
    ! assess the optimization by RMSD change !
    call rmsd(molopt%n,anc%xyz,molopt%xyz,1,U,x_center,y_center,rmsdval,.false.,grmsd)
 
    ! this comes close to a goto, but it's not a goto ... it's even worse !
    if (restart.and.iter.lt.maxopt) then
+      if (.not.ex) then
+         if (profile) call timer%measure(3)
+         call update_stiffening(nat3,nvar,anc%B,anc%hess,hinit,cstiff)
+         if (profile) call timer%measure(3)
+      end if
+      trad = min(trad, trust_init)
       if (pr) then
          write(env%unit,'(" * RMSD in coord.:",f14.7,1x,"α")',advance='no') rmsdval
          write(env%unit,'(6x,"energy gain",e16.7,1x,"Eh")') etot-esave
@@ -622,6 +682,73 @@ subroutine ancopt(env,ilog,mol,chk,calc, &
 end subroutine ancopt
 
 
+!> Carry curvature learned by the quasi-Newton update over to the next ANC set.
+!>
+!> The difference between the updated and the initial Hessian of the current
+!> ANC set plus the stiffening that was carried into this set (projected onto
+!> the current ANC basis) is decomposed and only its positive part is kept,
+!> i.e. curvature that was found to be stiffer than the model Hessian. Unlike
+!> the full difference, it cannot create negative eigenvalues when the old ANC
+!> directions no longer match the new geometry. The result is stored as a
+!> Cartesian low-rank factor, stiffening = cstiff cstiff^T.
+subroutine update_stiffening(nat3, nvar, bmat, hess, hinit, cstiff)
+   !> Number of Cartesian coordinates
+   integer, intent(in) :: nat3
+   !> Number of ANCs
+   integer, intent(in) :: nvar
+   !> ANC basis, the first nvar columns are used
+   real(wp), intent(in) :: bmat(:, :)
+   !> Updated Hessian in the ANC basis (packed)
+   real(wp), intent(in) :: hess(:)
+   !> Initial Hessian in the ANC basis (packed)
+   real(wp), intent(in) :: hinit(:)
+   !> Cartesian factor of the stiffening, resized to its new rank
+   real(wp), allocatable, intent(inout) :: cstiff(:, :)
+
+   !> Curvatures below this value (Eh/bohr^2) are not carried over
+   real(wp), parameter :: stiff_thr = 1.0e-6_wp
+   real(wp), allocatable :: dh(:, :), tmp(:, :), eig(:), vec(:, :), work(:)
+   integer, allocatable :: iwork(:), isuppz(:)
+   real(wp) :: rdum(1)
+   integer :: i, j, k, m, info, idum(1)
+
+   allocate(dh(nvar, nvar), source=0.0_wp)
+   k = 0
+   do j = 1, nvar
+      do i = 1, j
+         k = k + 1
+         dh(i, j) = hess(k) - hinit(k)
+      end do
+   end do
+   k = size(cstiff, 2)
+   if (k > 0) then
+      allocate(tmp(nvar, k))
+      call dgemm('t', 'n', nvar, k, nat3, 1.0_wp, bmat, size(bmat, 1), &
+         & cstiff, nat3, 0.0_wp, tmp, nvar)
+      call dsyrk('u', 'n', nvar, k, 1.0_wp, tmp, nvar, 1.0_wp, dh, nvar)
+   end if
+
+   ! only the eigenpairs above the threshold are needed
+   allocate(eig(nvar), vec(nvar, nvar), isuppz(2*nvar))
+   call dsyevr('V', 'V', 'U', nvar, dh, nvar, stiff_thr, huge(1.0_wp), 0, 0, &
+      & 0.0_wp, m, eig, vec, nvar, isuppz, rdum, -1, idum, -1, info)
+   allocate(work(int(rdum(1))), iwork(idum(1)))
+   call dsyevr('V', 'V', 'U', nvar, dh, nvar, stiff_thr, huge(1.0_wp), 0, 0, &
+      & 0.0_wp, m, eig, vec, nvar, isuppz, work, size(work), iwork, size(iwork), info)
+   deallocate(cstiff)
+   if (info /= 0) m = 0
+   allocate(cstiff(nat3, m))
+
+   do j = 1, m
+      vec(:, j) = vec(:, j) * sqrt(eig(j))
+   end do
+   if (m > 0) then
+      call dgemm('n', 'n', nat3, m, nvar, 1.0_wp, bmat, size(bmat, 1), vec, nvar, &
+         & 0.0_wp, cstiff, nat3)
+   end if
+end subroutine update_stiffening
+
+
 !> @brief actual optimization procedure
 !!
 !! note that this subroutines implements the main loop of the optimization
@@ -629,7 +756,7 @@ end subroutine ancopt
 !! routine, the only way to leave this subroutine is by an EARLY return,
 !! without going over the RESTART logical at the end of the subroutine.
 !* I have warned you, be careful not to break anything.
-subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
+subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,trad,ethr,gthr, &
       &          ii,chk,calc, &
       &          egap,acc_in,et,maxiter,iupdat,etot,g,sigma,ilog,pr,fail,converged, &
       &          timer,exact,avconv)
@@ -702,6 +829,9 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
    !> averaging
    type(convergence_log), intent(inout), optional :: avconv
 
+   !> trust radius of the RF step (updated)
+   real(wp),intent(inout) :: trad
+
    !> SCC results storage
    type(scc_results) :: res
 
@@ -718,7 +848,11 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
    integer  :: i, j, ii, jj, k, lwork, info, m, idum, imax(3)
    real(wp) :: energy,ethr,gthr,dsnrm,maxdispl,t0,w0,t1,w1
    real(wp) :: lambda,gnorm,dnorm,ddot,eold,xdum,estart,acc,e_in
-   real(wp) :: depred,echng,dummy,maxd,alp,gchng,smallreal,gnold
+   real(wp) :: depred,echng,dummy,maxd,gchng,smallreal,gnold
+   real(wp) :: rho, dsold, amx
+   logical  :: rejected
+   integer  :: nreject
+   real(wp),allocatable :: dxc(:)
    real(wp),allocatable :: gold(:)
    real(wp),allocatable :: displ(:), gint(:)
 
@@ -751,12 +885,12 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
    gnorm  = 0.0_wp
    depred = 0.0_wp
    echng  = 0.0_wp
-   alp    = 1.0_wp
    maxd   = maxdispl
    acc    = acc_in
    energy = etot
    e_in   = etot
    first  = .true.
+   nreject = 0
    converged = .false.
 
    nvar1  = anc%nvar+1         ! dimension of RF calculation
@@ -764,6 +898,7 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
    npvar1 = nvar1*(nvar1+1)/2  ! packed size of augmented Hessian
    
    allocate( gold(anc%nvar), displ(anc%nvar), gint(anc%nvar), source = 0.0_wp )
+   allocate( dxc(anc%n3), source = 0.0_wp )
    allocate( Uaug(nvar1,1),eaug(nvar1),Aaug(npvar1) )
 
 !! ========================================================================
@@ -880,25 +1015,49 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
 
    if(ii.eq.1) estart=energy ! save energy of first iteration
 
-   ! adjust step size dynamically !
-   if(gnorm.lt.0.002)then 
-      alp = 1.5d0       ! 1.5
-   elseif(gnorm.lt.0.0006)then
-      alp = 2.0d0       ! 2
-   elseif(gnorm.lt.0.0003)then
-      alp = 3.0d0       ! 3
-   else
-      alp = 1.0d0
-   endif
+   ! update the trust radius from the ratio of actual to predicted change
+   ! (minimisation only; the TS search with Powell update is left unchanged)
+   rejected = .false.
+   if (ii > 1 .and. iupdat == 0) then
+      dsold = norm2(displ)
+      if (abs(depred) > 1.0e-12_wp) then
+         rho = echng/depred
+      else
+         rho = 1.0_wp
+      end if
+      if (echng > 0.0_wp .or. rho < 0.25_wp) then
+         trad = max(trust_min, 0.5_wp*min(trad, dsold))
+      else if (rho > 0.75_wp .and. dsold > 0.8_wp*trad) then
+         trad = min(trust_max, 2.0_wp*trad)
+      end if
+
+      ! reject a clearly uphill step that overshot: go back to the previous
+      ! point and keep only the curvature information of the rejected step;
+      ! not with convergence averaging, where the rejected point is already logged
+      if (echng > step_reject_thr .and. dot_product(gint, displ) > 0.0_wp &
+         & .and. nreject < max_reject &
+         & .and. dsold > (1.0_wp+1.0e-6_wp)*trust_min .and. .not.present(avconv)) then
+         rejected = .true.
+         nreject = nreject + 1
+         call bfgs(anc%nvar,gnorm,gint,gold,displ,anc%hess,floor=bfgs_floor_scale*anc%hlow)
+         anc%coord = anc%coord - displ
+         gint   = gold
+         gnorm  = gnold
+         energy = eold
+         if (pr) write(env%unit,'(3x,"step rejected, new trust radius",f12.6)') trad
+      else
+         nreject = 0
+      end if
+   end if
 
 !! ------------------------------------------------------------------------
 !  Update the hessian
 !! ------------------------------------------------------------------------
 
    if (profile) call timer%measure(7,'hessian update')
-   if(ii.gt.1)then
+   if(ii.gt.1 .and. .not.rejected)then
       if(iupdat.eq.0)then
-         call bfgs  (anc%nvar,gnorm,gint,gold,displ,anc%hess)
+         call bfgs  (anc%nvar,gnorm,gint,gold,displ,anc%hess,floor=bfgs_floor_scale*anc%hlow)
       else
          call powell(anc%nvar,gnorm,gint,gold,displ,anc%hess)
       endif
@@ -934,6 +1093,13 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
       call solver_sspevx(nvar1,r4dum,Aaug,Uaug,eaug,fail)
    endif
    
+   ! the single-precision solvers can report non-convergence for very small
+   ! (soft) augmented Hessians although the problem is well posed; retry in
+   ! double precision before giving up
+   if (fail .or. abs(Uaug(nvar1,1)).lt.1.e-10) then
+      call solver_rf_double(nvar1,Aaug,Uaug,eaug,fail)
+   end if
+
    ! error handling after RF calculation !
    if (fail .or. abs(Uaug(nvar1,1)).lt.1.e-10) then
       call env%error("internal rational function error", source)
@@ -951,6 +1117,19 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
       endif
    enddo
    
+   ! restrict the step to the trust radius (minimisation only)
+   if (iupdat == 0) then
+      dsnrm = norm2(displ)
+      if (dsnrm > trad) displ = displ*(trad/dsnrm)
+      ! limit the displacement of any single atom
+      call dgemv('n',anc%n3,anc%nvar,1.0_wp,anc%B,anc%n3,displ,1,0.0_wp,dxc,1)
+      amx = 0.0_wp
+      do j = 1, mol%n
+         amx = max(amx, norm2(dxc(3*j-2:3*j)))
+      end do
+      if (amx > max_atom_displ) displ = displ*(max_atom_displ/amx)
+   end if
+
    ! now some output !
    dsnrm=sqrt(ddot(anc%nvar,displ,1,displ,1)) ! displacement norm
    if(pr)then
@@ -962,10 +1141,10 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
       imax(3) = maxloc(gold,1)
 
       write(env%unit,'(3x,"displ. norm   :",f14.7,1x,"α")',advance='no') &
-         dsnrm*alp
+         dsnrm
       write(env%unit,'(6x,"lambda   ",e18.7)') eaug(1) ! eigenvalue of the RF 
       write(env%unit,'(3x,"maximum displ.:",f14.7,1x,"α")',advance='no') &
-         abs(displ(imax(1)))*alp
+         abs(displ(imax(1)))
       write(env%unit,'(6x,"in ANC''s ",3("#",i0,", "),"...")') imax
    endif
    
@@ -978,7 +1157,9 @@ subroutine relax(env,iter,mol,anc,restart,maxcycle,maxdispl,ethr,gthr, &
    endif
 
    ! new coordinates !
-   anc%coord = anc%coord + displ * alp
+   ! the step stored in displ is the one actually taken; it enters the
+   ! Hessian update and the predicted energy change of the next cycle
+   anc%coord = anc%coord + displ
 
    ! conv check !
    ! The energy change of the very first cycle is zero by construction 
@@ -1033,6 +1214,34 @@ pure subroutine solver_ssyevx(n,thr,A,U,e,fail)
 
    deallocate(iwork,work,ifail)
 end subroutine solver_ssyevx
+
+!> Lowest eigenpair of the packed augmented Hessian in double precision
+subroutine solver_rf_double(n,A,U,e,fail)
+   implicit none
+   integer, intent(in)    :: n
+   real(sp),intent(in)    :: A(:)
+   real(sp),intent(inout) :: U(:,:)
+   real(sp),intent(inout) :: e(:)
+   logical, intent(out)   :: fail
+   real(wp), allocatable  :: h(:,:), w(:), work(:)
+   integer :: i, j, k, info
+   external :: dsyev
+
+   allocate(h(n,n), w(n), work(max(1,3*n)))
+   k = 0
+   do j = 1, n
+      do i = 1, j
+         k = k + 1
+         h(i,j) = real(A(k),wp)
+         h(j,i) = h(i,j)
+      end do
+   end do
+   call dsyev('V','U',n,h,n,w,work,size(work),info)
+   fail = info.ne.0
+   if (fail) return
+   U(:,1) = real(h(:,1),sp)
+   e(1) = real(w(1),sp)
+end subroutine solver_rf_double
 
 pure subroutine solver_sspevx(n,thr,A,U,e,fail)
    use xtb_mctc_lapack, only : lapack_spevx

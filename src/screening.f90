@@ -104,7 +104,7 @@ subroutine screen(env, mol0, chk, calc, egap, et, maxiter, epot, grd, sigma)
    xyznew = xyznew*aatoau
 
    ! the input reference
-   mol = mol0
+   call assign_molecule(mol, mol0)
    rot = -1
    ecnf=10000.
    i=0

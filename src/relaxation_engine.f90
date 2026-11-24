@@ -108,6 +108,12 @@ module xtb_relaxation_engine
    !> use profiler while performing relaxation
    logical, private, parameter :: profile = .true.
 
+   !> Defaults of L-ANCopt and FIRE, used unless set in the input: lifetime of
+   !> the ANCs (and memory of the LBFGS update) and lowest force constant of
+   !> the model Hessian (Eh/bohr^2); independent of the RF-ANCopt defaults
+   integer, private, parameter :: micro_default = 20
+   real(wp), private, parameter :: hlow_default = 0.01_wp
+
    !> format for printing reals in setup section using scientific notation
    character(len=*), private, parameter :: scifmt = &
       '(10x,":",3x,a,e21.7,1x,a,1x,":")'
@@ -205,6 +211,7 @@ subroutine fire &
 
    !  settings for the fast inertial relaxation engine
    type(fire_options) :: opt
+   integer :: micro
 
    !  optimize cell parameters
    logical :: optcell
@@ -227,9 +234,11 @@ subroutine fire &
    if (profile) call timer%measure(1,'setup')
 
    ! settings for optimizer, defaults from ase/optimize/precon/fire.py
+   micro = set%optset%micro_opt
+   if (micro <= 0) micro = micro_default
    opt = fire_options(logstep = 1, &
       &               dtmax = 1.25_wp * fstoau, time_step = 0.25_wp * fstoau, &
-      &               micro_cycle = set%optset%micro_opt, &
+      &               micro_cycle = micro, &
       &               max_displacement = set%optset%maxdispl_opt, &
       &               printlevel = printlevel, &
       &               precon = .false., update = .false.)
@@ -505,6 +514,8 @@ subroutine l_ancopt &
 
    !  settings for the LBFGS optimizer
    type(lbfgs_options) :: opt
+   integer :: micro
+   real(wp) :: hlow
 
    !  determine wheter hessian is fragmented or not
    logical :: fragmented_hessian
@@ -524,12 +535,16 @@ subroutine l_ancopt &
    if (profile) call timer%measure(1,'setup')
 
    ! settings for optimizer, defaults from opt.f
+   micro = set%optset%micro_opt
+   if (micro <= 0) micro = micro_default
+   hlow = set%optset%hlow_opt
+   if (hlow <= 0.0_wp) hlow = hlow_default
    opt = lbfgs_options(logstep = 1, &
       &                printlevel = printlevel, &
-      &                micro_cycle = set%optset%micro_opt, &
-      &                memory = set%optset%micro_opt, &
+      &                micro_cycle = micro, &
+      &                memory = micro, &
       &                max_displacement = set%optset%maxdispl_opt, &
-      &                hlow = set%optset%hlow_opt )
+      &                hlow = hlow )
 
    ! obtain the thresholds from the optlevel, possible optlevels are currently
    call get_optthr(mol%n,optlevel,opt%e_thr,opt%g_thr,maxcycle,opt%acc)
@@ -632,7 +647,7 @@ subroutine l_ancopt &
 
    estart = energy
    thiscycle = opt%micro_cycle
-   molopt = mol
+   call assign_molecule(molopt, mol)
 
    if (.not.pr.and.minpr) write(env%unit,'(a6,a14,a16,a16,a15,a6)') &
       &          "cycle", "energy", "change", "gnorm", "step", "conv?"
@@ -797,7 +812,7 @@ subroutine l_ancopt &
    endif
 
    ! save optimized geometry
-   mol = molopt
+   call assign_molecule(mol, molopt)
 
    if (present(iter_needed)) then
       iter_needed = iter

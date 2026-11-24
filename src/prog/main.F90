@@ -2024,6 +2024,24 @@ contains
                call set_opt(env, 'optlevel', sec)
             end if
 
+         case ('--nopt')
+            ! geometry optimisation as before: ANCopt (L-ANCopt above 500 atoms)
+            call set_runtyp('opt')
+            set%opt_auto = .false.
+            call args%nextArg(sec)
+            if (allocated(sec)) then
+               call set_opt(env, 'optlevel', sec)
+            end if
+
+         case ('--iopt')
+            ! geometry optimisation with the internal-coordinate engine
+            call set_runtyp('opt')
+            call set_opt(env, 'engine', 'int')
+            call args%nextArg(sec)
+            if (allocated(sec)) then
+               call set_opt(env, 'optlevel', sec)
+            end if
+
          case ('--hess')
             call set_runtyp('hess')
 

@@ -17,7 +17,7 @@
 module xtb_bfgs
 contains
 
-subroutine bfgs(nat3,gnorm,grad,grado,dx,hess)
+subroutine bfgs(nat3,gnorm,grad,grado,dx,hess,floor)
    use xtb_mctc_accuracy, only : wp
    use xtb_mctc_blas, only : blas_spmv, blas_dot
    !-------------------------------------------------------------------
@@ -38,6 +38,9 @@ subroutine bfgs(nat3,gnorm,grad,grado,dx,hess)
    real(wp),intent(in) :: grad(nat3)
    real(wp),intent(in) :: grado(nat3)
    real(wp),intent(in) :: dx(nat3)
+   !> lower bound for the diagonal elements of the updated Hessian
+   !> (default 0.01; ANCopt passes a value tied to hlow)
+   real(wp),intent(in),optional :: floor
    real(wp),intent(in) :: gnorm
    ! Output:
    real(wp),intent(inout) :: hess(nat3*(nat3+1)/2)
@@ -94,6 +97,7 @@ subroutine bfgs(nat3,gnorm,grad,grado,dx,hess)
 
    ! limit diagonal to (0.01 slightly better than 0.001)
    thr=1.d-2
+   if (present(floor)) thr=floor
    ij=0
    do i=1,nat3
       ij=ij+i

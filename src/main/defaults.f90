@@ -21,7 +21,9 @@ module xtb_main_defaults
    use xtb_type_calculator, only : TCalculator
    use xtb_type_environment, only : TEnvironment
    use xtb_type_molecule, only : TMolecule
-   use xtb_setparam, only : set, p_engine_lbfgs, p_engine_rf, p_engine_pbc_lbfgs
+   use xtb_setparam, only : set, p_engine_lbfgs, p_engine_rf, p_engine_pbc_lbfgs, p_engine_int, &
+      & p_ext_gfnff
+   use xtb_optimizer_internal, only : intopt_preferred
    use xtb_main_setup, only : addSolvationModel
    implicit none
    private
@@ -38,12 +40,25 @@ subroutine initDefaults(env, calc, mol, gsolvstate)
    class(TCalculator), intent(inout) :: calc
    type(TMolecule), intent(in) :: mol
    integer, intent(in) :: gsolvstate
+   character(len=:), allocatable :: reason
 
    if (.not.allocated(set%opt_engine)) then
       if (mol%npbc > 0) then
          set%opt_engine = p_engine_pbc_lbfgs
       else if (mol%n > 500) then
          set%opt_engine = p_engine_lbfgs
+      else if (set%opt_auto .and. .not.set%tsopt) then
+         ! ANCopt or internal coordinates, decided from the covalent topology
+         ! GFN-FF gradients are so cheap that the larger overhead of intopt
+         ! outweighs the saved cycles already for medium-sized molecules
+         if (intopt_preferred(mol, merge(50, 250, set%mode_extrun == p_ext_gfnff), &
+            & reason)) then
+            set%opt_engine = p_engine_int
+            set%opt_auto_reason = "intopt (internal coordinates), " // reason
+         else
+            set%opt_engine = p_engine_rf
+            set%opt_auto_reason = "ANCopt, " // reason
+         end if
       else
          set%opt_engine = p_engine_rf
       end if

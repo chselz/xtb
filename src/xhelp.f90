@@ -270,21 +270,28 @@ subroutine help(iunit)
    "      --vomega             performs calculation of electrophilicity index with GFN1-xTB.",&
    "                           IPEA-xTB is used with --vparam param_ipea-xtb.txt.",&
    "      --grad               performs a gradient calculation",&
-   "  -o, --opt [LEVEL]        perform a geometry optimization (nonperiodic: `ancopt(3)`,",&
-   "                           periodic with lattice-vector relaxation: `pbc_lbfgs`),",&
+   "  -o, --opt [LEVEL]        perform a geometry optimization; nonperiodic: automatic choice",&
+   "                           between `intopt` (main-group covalent topology, <= 250 atoms,",&
+   "                           GFN-FF: <= 50 atoms) and `ancopt(3)` (metal atoms, otherwise);",&
+   "                           periodic with lattice-vector relaxation: `pbc_lbfgs`,",&
    "                           levels from crude, sloppy, loose, normal (default), tight, verytight",&
    "                           to extreme can be chosen, level sets also the default accuracy setting",&
    "                           (overwritten by --acc flag)",&
+   "      --nopt [LEVEL]       geometry optimization with ANCopt (L-ANCopt above 500 atoms),",&
+   "                           i.e. without the automatic choice, same levels as --opt",&
+   "      --iopt [LEVEL]       geometry optimization in redundant internal coordinates (intopt,",&
+   "                           quasi-Newton after Sella, fragments get translation/rotation",&
+   "                           coordinates), same levels as --opt",&
    "      --nocellopt          keep lattice vectors fixed during periodic geometry optimization",&
    "      --cycles INT         maximum number of optimization cycles",&
    "      --hess               perform a numerical hessian calculation on input geometry, tightens",&
    "                           the default SCC accuracy setting to 0.2 (overwritten by --acc flag)",&
-   "      --ohess [LEVEL]      perform a numerical hessian calculation on an ancopt(3) optimized",&
-   "                           geometry, hessian uses 0.2 accuracy by default and follows tighter",&
-   "                           optimization levels (overwritten by --acc flag)",&
-   "      --bhess [LEVEL]      perform a biased numerical hessian calculation on an ancopt(3) optimized",&
-   "                           geometry, hessian uses 0.2 accuracy by default and follows tighter",&
-   "                           optimization levels (overwritten by --acc flag).",&
+   "      --ohess [LEVEL]      perform a numerical hessian calculation on an optimized geometry",&
+   "                           (engine chosen as for --opt), hessian uses 0.2 accuracy by default",&
+   "                           and follows tighter optimization levels (overwritten by --acc flag)",&
+   "      --bhess [LEVEL]      perform a biased numerical hessian calculation on an optimized geometry",&
+   "                           (engine chosen as for --opt), hessian uses 0.2 accuracy by default",&
+   "                           and follows tighter optimization levels (overwritten by --acc flag).",&
    "",&
    "                           Molecular Hessian runs with more than one atom, no frozen atoms, and no",&
    "                           periodicity automatically print compliance constants, relaxed force",&
@@ -297,11 +304,11 @@ subroutine help(iunit)
    "      --md                 molecular dynamics simulation on start geometry",&
    "      --metadyn [int]      meta dynamics simulation on start geometry, saving int snapshots of the",&
    "                           trajectory to bias the simulation",&
-   "      --omd                molecular dynamics simulation on ancopt(3) optimized geometry, a loose",&
-   "                           optimization level will be chosen",&
-   "      --metaopt [LEVEL]    call ancopt(3) to perform a geometry optimization, then try to find other",&
-   "                           minimas by meta dynamics, level sets also the default accuracy",&
-   "                           setting (overwritten by --acc flag)",&
+   "      --omd                molecular dynamics simulation on an optimized geometry (engine chosen",&
+   "                           as for --opt), a loose optimization level will be chosen",&
+   "      --metaopt [LEVEL]    perform a geometry optimization (engine chosen as for --opt), then try",&
+   "                           to find other minimas by meta dynamics, level sets also the default",&
+   "                           accuracy setting (overwritten by --acc flag)",&
    "      --path [FILE]        use meta dynamics to calculate a path from the input geometry to the",&
    "                           given product structure",&
    "      --modef INT          modefollowing algorithm. INT specifies the mode that should be used for",&

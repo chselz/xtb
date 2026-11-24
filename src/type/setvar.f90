@@ -79,6 +79,7 @@ module xtb_type_setvar
       integer  :: optlev = 0
       
       !> number of opt. cycles before new ANC are made by model Hessian
+      !> (0: default of the optimization engine)
       integer  :: micro_opt = 0
 
       !> total number of opt. cycles, 0 means automatically determined
@@ -87,7 +88,8 @@ module xtb_type_setvar
       !> maximum coordinate displacement in ancopt
       real(wp) :: maxdispl_opt = 0.0_wp
       
-      !> lowest force constant in ANC generation (should be > 0.005)
+      !> lowest force constant in ANC generation (Eh/bohr^2)
+      !> (0: default of the optimization engine)
       real(wp) :: hlow_opt = 0.0_wp
       
       logical :: exact_rf = .false.

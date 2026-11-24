@@ -210,6 +210,7 @@ subroutine write_set_opt(ictrl)
       case(p_engine_lbfgs);    write(ictrl,'("lbfgs")')
       case(p_engine_pbc_lbfgs);    write(ictrl,'("pbc_lbfgs")')
       case(p_engine_inertial); write(ictrl,'("inertial")')
+      case(p_engine_int);      write(ictrl,'("int")')
       end select
    end if
    if (allocated(set%opt_outfile)) &
@@ -217,10 +218,12 @@ subroutine write_set_opt(ictrl)
    if (allocated(set%opt_logfile)) &
       write(ictrl,'(3x,"logfile=",a)') set%opt_logfile
    write(ictrl,'(3x,"optlevel=",a)') int2optlevel(set%optset%optlev)
-   write(ictrl,'(3x,"microcycle=",i0)') set%optset%micro_opt
+   if (set%optset%micro_opt > 0) &
+      write(ictrl,'(3x,"microcycle=",i0)') set%optset%micro_opt
    write(ictrl,'(3x,"maxcycle=",i0)') set%optset%maxoptcycle
    write(ictrl,'(3x,"maxdispl=",g0)') set%optset%maxdispl_opt
-   write(ictrl,'(3x,"hlow=",g0)') set%optset%hlow_opt
+   if (set%optset%hlow_opt > 0.0_wp) &
+      write(ictrl,'(3x,"hlow=",g0)') set%optset%hlow_opt
    write(ictrl,'(3x,"hessian=")',advance='no')
    select case(set%mhset%model)
    case default;          write(ictrl,'("lindh-d2")')
@@ -1897,6 +1900,7 @@ subroutine set_opt(env,key,val)
          case('lbfgs','l-ancopt'); set%opt_engine = p_engine_lbfgs
          case('pbc_lbfgs');        set%opt_engine = p_engine_pbc_lbfgs
          case('inertial','fire');  set%opt_engine = p_engine_inertial
+         case('int','intopt','sella'); set%opt_engine = p_engine_int
          end select
       end if
    case('output')

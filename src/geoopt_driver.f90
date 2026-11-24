@@ -31,6 +31,7 @@ subroutine geometry_optimization &
    use xtb_type_calculator
    use xtb_type_data
    use xtb_optimizer
+   use xtb_optimizer_internal, only : intopt
    use xtb_relaxation_engine
    use xtb_single
    ! modules for PBC opt with LBFGS including lattice optimization
@@ -119,6 +120,8 @@ subroutine geometry_optimization &
    else
       opt_engine = p_engine_rf
    end if
+   if (pr .and. allocated(set%opt_auto_reason)) write(env%unit, '(/,1x,a)') &
+      & "optimizer (automatic choice): " // set%opt_auto_reason
 
    if (mol%npbc > 0 .and. &
       & (opt_engine == p_engine_rf .or. opt_engine == p_engine_lbfgs)) then
@@ -176,6 +179,12 @@ subroutine geometry_optimization &
          & egap,et,maxiter,maxcycle_in,etot,g,sigma,tight,pr,fail, iter_needed)
       final_sp = .true. ! required since ANCopt might perform an untracked displacement 
    
+   case(p_engine_int) ! quasi-Newton in redundant internals (Sella-type) !
+      call intopt &
+         &(env,ilog,mol,wfn,calc, &
+         & egap,et,maxiter,maxcycle_in,etot,g,sigma,tight,pr,fail, iter_needed)
+      final_sp = .true.
+
    case(p_engine_lbfgs)
       call l_ancopt & ! L-ANCopt !
          &(env,ilog,mol,wfn,calc, &

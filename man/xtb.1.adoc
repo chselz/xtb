@@ -272,11 +272,25 @@ NOTE: You can only select *one* runtyp, only the first runtyp will be used
     performs a gradient calculation
 
 *-o, --opt* ['LEVEL']::
-    perform a geometry optimization (nonperiodic: `ancopt(3)`, 
-    periodic with lattice-vector relaxation: `pbc_lbfgs`),
+    perform a geometry optimization; nonperiodic: automatic choice between
+    `intopt` (only main-group elements, at most six covalent neighbours per
+    atom, at most 250 atoms, with GFN-FF at most 50 atoms) and `ancopt(3)`
+    (otherwise, e.g. metal atoms),
+    the choice and its reason are printed; periodic with lattice-vector
+    relaxation: `pbc_lbfgs`,
     levels from crude, sloppy, loose, normal (default), tight, verytight
     to extreme can be chosen, level sets also the default accuracy setting
     (overwritten by --acc flag)
+
+*--nopt* ['LEVEL']::
+    perform a geometry optimization with `ancopt(3)` (L-ANCopt above 500
+    atoms) without the automatic engine choice, levels as for --opt
+
+*--iopt* ['LEVEL']::
+    perform a geometry optimization with the internal-coordinate engine
+    (`intopt`: redundant internals, quasi-Newton after Sella; covalently
+    disconnected fragments get translation/rotation coordinates),
+    levels as for --opt; same as --opt with `$opt engine=int`
 
 *--nocellopt*::
     disable lattice-vector relaxation during periodic geometry optimization
@@ -287,13 +301,13 @@ NOTE: You can only select *one* runtyp, only the first runtyp will be used
     tightens the default SCC accuracy setting to 0.2 (overwritten by --acc flag)
 
 *--ohess* ['LEVEL']::
-    perform a numerical hessian calculation on an `ancopt(3)` optimized
-    geometry, hessian uses 0.2 accuracy by default and follows tighter
+    perform a numerical hessian calculation on an optimized geometry
+    (engine chosen as for --opt), hessian uses 0.2 accuracy by default and follows tighter
     optimization levels (overwritten by --acc flag)
 
 *--bhess* ['LEVEL']::
-    perform a biased numerical hessian calculation on an `ancopt(3)` optimized
-    geometry, hessian uses 0.2 accuracy by default and follows tighter
+    perform a biased numerical hessian calculation on an optimized geometry
+    (engine chosen as for --opt), hessian uses 0.2 accuracy by default and follows tighter
     optimization levels (overwritten by --acc flag)
 
     Hessian runs automatically perform a compliance analysis for nonperiodic
@@ -310,11 +324,11 @@ NOTE: You can only select *one* runtyp, only the first runtyp will be used
     of the trajectory to bias the simulation
 
 *--omd*::
-    molecular dynamics simulation on `ancopt(3)` optimized geometry,
-    a loose optimization level will be chosen
+    molecular dynamics simulation on an optimized geometry (engine chosen
+    as for --opt), a loose optimization level will be chosen
 
 *--metaopt* ['LEVEL']::
-    call `ancopt(3)` to perform a geometry optimization,
+    perform a geometry optimization (engine chosen as for --opt),
     then try to find other minimas by meta dynamics, 
     level sets also the default accuracy setting (overwritten by --acc flag)
 
